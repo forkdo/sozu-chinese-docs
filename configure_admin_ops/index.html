@@ -1,0 +1,1355 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sōzu 是一个轻量级、快速且始终在线的反向代理服务器。">
+      
+      
+        <meta name="author" content="Jetsung Chan">
+      
+      
+        <link rel="canonical" href="https://sozu.ooos.top/configure_admin_ops/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.53">
+    
+    
+      
+        <title>Sōzu — 运维重新配置指南 - Sōzu 中文文档</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.20815dad.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sozu" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="./.." title="Sōzu 中文文档" class="md-header__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sōzu 中文文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sōzu — 运维重新配置指南
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
+  <button type="button" class="md-search__button">
+    查找
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sozu-proxy/sozu
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="Sōzu 中文文档" class="md-nav__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Sōzu 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sozu-proxy/sozu
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  首页
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  介绍
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  介绍
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  入门
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  配置 Sōzu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  如何使用
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configure_cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  命令行配置
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_you_should_use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  为什么你应该使用 Sōzu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design_motivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  设计动机
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  技巧
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  概述
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  概述
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  架构概述
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools_libraries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  工具和库
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  深入
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  深入
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifetime_of_a_session/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  会话的生命周期
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  调试策略
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  基准测试
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lexicon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  词汇表
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        1. 可补丁的监听器字段
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-h2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        2. 操作示例 —— 遭受攻击时收紧 H2 洪水阈值
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-disable_http11" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        3. 操作示例 —— 按监听器切换 <code>disable_http11</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-cluster-h2-enabledisable" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        4. 操作示例 —— <code>cluster h2 enable|disable</code>
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-feath2-mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5. <code>feat/h2-mux</code> 分支引入的行为
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. feat&#x2f;h2-mux 分支引入的行为">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-h2-stream-vec" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.1 每次连接的 H2 stream-Vec 收缩
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-channel-message_len" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.2 Channel <code>message_len</code> 上限
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-unix-socket" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.3 Unix 命令 socket 注册失败时丢弃
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-sni" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.4 SNI 尾部点规范化
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-httpsalpnrejectedunsupported" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.5 <code>https.alpn.rejected.unsupported</code> 计数器
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-ensure_frame_size" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        5.6 <code>ensure_frame_size!</code> 宏
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        6. 交叉引用
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="sozu">Sōzu — 运维重新配置指南<a class="headerlink" href="#sozu" title="Permanent link">&para;</a></h1>
+<p>本文档介绍操作员在故障排除和维护期间使用的运行时调整参数，
+以 <code>sozu</code> CLI 的操作示例展开。它是 <a href="../configure/"><code>configure.md</code></a> 的运维 counterpart：
+该文件是逐字段参考；本文档按操作员的实际运行顺序来讲解各命令动词，
+包括随 <code>Update*Listener</code> 动词引入的"省略时保留"的逐字段语义。</p>
+<p>数据平面内部实现参见
+<a href="../../lib/src/protocol/mux/LIFECYCLE/"><code>../lib/src/protocol/mux/LIFECYCLE.md</code></a>；
+管控面参见
+<a href="../../bin/src/command/LIFECYCLE/"><code>../bin/src/command/LIFECYCLE.md</code></a>。</p>
+<hr />
+<h2 id="1">1. 可补丁的监听器字段<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<p>每次 <code>sozu listener {http,https,tcp} update</code> 调用都会生成一个
+<code>Update*Listener</code> 请求类型
+（<code>UpdateHttpListenerConfig</code> / <code>UpdateHttpsListenerConfig</code> /
+<code>UpdateTcpListenerConfig</code> —— 参见
+<code>bin/src/command/requests.rs:33</code> 的导入）。其语义是
+<strong>省略时保留</strong>：您没有传递的每个 CLI 标志都会在 worker 端保持当前值，
+因此更新是一个真正的补丁，而非完整替换。</p>
+<p>简表如下 —— 完整字段参考（含默认值、可变性类别和指标影响）
+请参见 <a href="../configure/"><code>configure.md</code></a>：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>监听器类型</th>
+<th>省略时保留</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>front_timeout</code> / <code>back_timeout</code></td>
+<td>http, https, tcp</td>
+<td>是</td>
+<td>秒；仅影响补丁后的新会话</td>
+</tr>
+<tr>
+<td><code>connect_timeout</code></td>
+<td>http, https, tcp</td>
+<td>是</td>
+<td>秒</td>
+</tr>
+<tr>
+<td><code>request_timeout</code></td>
+<td>http, https</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td><code>disable_http11</code></td>
+<td>https</td>
+<td>是</td>
+<td>仅影响新握手</td>
+</tr>
+<tr>
+<td><code>alpn_protocols</code></td>
+<td>https</td>
+<td>是</td>
+<td>使用 <code>--reset-alpn</code> 恢复默认值 <code>["h2", "http/1.1"]</code></td>
+</tr>
+<tr>
+<td><code>strict_sni_binding</code></td>
+<td>https</td>
+<td>是</td>
+<td><code>:authority</code> 被证书 SAN 覆盖（CWE-346 / CWE-444）</td>
+</tr>
+<tr>
+<td><code>sozu_id_header</code></td>
+<td>http, https</td>
+<td>是</td>
+<td>重新命名每个请求的关联头</td>
+</tr>
+<tr>
+<td>H2 洪水阈值 (<code>h2_max_*</code>)</td>
+<td>https</td>
+<td>是</td>
+<td>每次连接设置；仅对新建连接生效</td>
+</tr>
+<tr>
+<td><code>h2_stream_idle_timeout_seconds</code></td>
+<td>https</td>
+<td>是</td>
+<td>防范慢速多路复用 Slowloris</td>
+</tr>
+<tr>
+<td><code>h2_max_header_table_size</code></td>
+<td>https</td>
+<td>是</td>
+<td>HPACK 动态表上限</td>
+</tr>
+<tr>
+<td><code>h2_stream_shrink_ratio</code></td>
+<td>https</td>
+<td>是</td>
+<td>每次连接的 scratch-Vec 收缩阈值</td>
+</tr>
+<tr>
+<td><code>expect_proxy</code></td>
+<td>tcp</td>
+<td>是</td>
+<td>PROXY-v2 入口</td>
+</tr>
+</tbody>
+</table>
+<p>CLI 标志到字段的映射位于
+<code>bin/src/cli.rs</code> 和 <code>bin/src/ctl/request_builder.rs</code>。</p>
+<hr />
+<h2 id="2-h2">2. 操作示例 —— 遭受攻击时收紧 H2 洪水阈值<a class="headerlink" href="#2-h2" title="Permanent link">&para;</a></h2>
+<p>当 Rapid Reset（CVE-2023-44487）特征出现在监控仪表盘中时，
+在不停止任何 worker 的情况下将每窗口的 RST_STREAM 上限减半，
+并降低寿命期的滥用上限：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 先查看各监听器的当前阈值。</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sozu<span class="w"> </span>listener<span class="w"> </span>list
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 将 HTTPS 监听器的 Rapid Reset 预算减半。</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sozu<span class="w"> </span>listener<span class="w"> </span>https<span class="w"> </span>update<span class="w"> </span>-a<span class="w"> </span><span class="m">0</span>.0.0.0:8443<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>--h2-max-rst-stream-per-window<span class="w"> </span><span class="m">50</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span>--h2-max-rst-stream-abusive-lifetime<span class="w"> </span><span class="m">25</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># 确认补丁已生效。</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>sozu<span class="w"> </span>listener<span class="w"> </span>list
+</span></code></pre></div>
+<p>已有 H2 连接保持它们被接受时的阈值 —— 洪水检测器在连接建立时接入，
+不会重新读取。补丁后新建的连接会看到更严格的限制。</p>
+<p>CONTINUATION 洪水阈值（CVE-2024-27316）和服务端发出的
+RST_STREAM 阈值（CVE-2025-8671）遵循相同模式，
+各自有 <code>--h2-max-continuation-frames</code> 和
+<code>--h2-max-rst-stream-emitted-lifetime</code> 标志。
+详见 <code>configure.md:560-567</code>。</p>
+<p>接收端的关注计数器是
+<code>h2.flood.violation.&lt;kind&gt;</code>（每个 CVE 一个）以及
+<code>h2.{goaway,rst_stream}.{sent,received}.&lt;code&gt;</code>（用于
+GOAWAY / RST_STREAM 错误归因）。</p>
+<hr />
+<h2 id="3-disable_http11">3. 操作示例 —— 按监听器切换 <code>disable_http11</code><a class="headerlink" href="#3-disable_http11" title="Permanent link">&para;</a></h2>
+<p><code>disable_http11</code> 是每个监听器上的 HTTP/1.1 连接禁用开关。
+当为 <code>true</code> 时，rustls 握手会拒绝任何 ALPN 提议中不含 <code>h2</code>
+（或完全省略 ALPN）的客户端。拒绝路径上触发的指标见下方 §5。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 强制每个新客户端在 HTTPS 监听器上协商 h2。</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sozu<span class="w"> </span>listener<span class="w"> </span>https<span class="w"> </span>update<span class="w"> </span>-a<span class="w"> </span><span class="m">0</span>.0.0.0:8443<span class="w"> </span>--disable-http11
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 恢复 —— 允许 HTTP/1.1 回退。</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>sozu<span class="w"> </span>listener<span class="w"> </span>https<span class="w"> </span>update<span class="w"> </span>-a<span class="w"> </span><span class="m">0</span>.0.0.0:8443<span class="w"> </span>--enable-http11
+</span></code></pre></div>
+<p>进行中的 HTTPS 握手按其启动时的 rustls 配置完成；
+新策略仅适用于新握手。此监听器上的现有 HTTP/1.1 会话
+会继续直到关闭。</p>
+<hr />
+<h2 id="4-cluster-h2-enabledisable">4. 操作示例 —— <code>cluster h2 enable|disable</code><a class="headerlink" href="#4-cluster-h2-enabledisable" title="Permanent link">&para;</a></h2>
+<p><code>sozu cluster h2 enable | disable</code> 命令用于切换
+<code>Cluster::http2</code>，这是一个驱动"代理是否应尝试对该集群后端使用 H2"
+的后端能力提示。在 <code>feat/h2-mux</code> 上 Sōzu 仍然对后端使用 H1，
+因此此开关是面向未来的 —— 它不控制前端 H2，
+前端 H2 完全由 TLS ALPN 驱动。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 在标记集群为后端 H2 可用。</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sozu<span class="w"> </span>cluster<span class="w"> </span>h2<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--id<span class="w"> </span>my-cluster
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 恢复。</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sozu<span class="w"> </span>cluster<span class="w"> </span>h2<span class="w"> </span>disable<span class="w"> </span>--id<span class="w"> </span>my-cluster
+</span></code></pre></div>
+<p>行为上这是一个<strong>查询后重新提交</strong>的舞步，而非部分补丁。
+参见 <code>bin/src/ctl/request_builder.rs:214-238</code>：</p>
+<ol>
+<li>CLI 发出 <code>QueryClusterById(my-cluster)</code> 请求，同步等待
+   master 响应（<code>request_builder.rs:220-221</code>）。</li>
+<li>在响应中找到匹配的 <code>ClusterInformation</code>，
+   提取当前 <code>ClusterConfiguration</code>（<code>request_builder.rs:222-240</code>）。</li>
+<li>重写提取配置上的 <code>http2</code> 字段，并以完整 <code>AddCluster(updated)</code>
+   重新提交（<code>request_builder.rs:242-247</code>）。监管器将
+   <code>AddCluster</code> 视为 upsert，因此这充当了针对性编辑，
+   即使没有专用的"补丁集群"动词。</li>
+</ol>
+<p>对操作员的影响：一个并非通过查询-重提交舞步产生的
+<code>AddCluster</code> 配置（例如从状态文件加载的）会完全替换集群。
+在不编写自定义客户端的情况下应用部分集群变更，
+请遵循相同的两步查询-重提交模式。</p>
+<hr />
+<h2 id="5-feath2-mux">5. <code>feat/h2-mux</code> 分支引入的行为<a class="headerlink" href="#5-feath2-mux" title="Permanent link">&para;</a></h2>
+<p>以下项目是在 <code>feat/h2-mux</code> 分支引入的，
+此处作为<strong>运维机制</strong>文档 —— 做什么、何时触发、如何监控 ——
+而非重复 <code>configure.md</code> 中已有的逐字段参考。</p>
+<h3 id="51-h2-stream-vec">5.1 每次连接的 H2 stream-Vec 收缩<a class="headerlink" href="#51-h2-stream-vec" title="Permanent link">&para;</a></h3>
+<p>提交：<code>e478cf8b</code>。参考：<code>doc/configure.md:442, 458, 570</code>。</p>
+<p>每个 <code>ConnectionH2</code> 在 mux <code>Context</code> 中维护一个
+<code>Vec&lt;Stream&gt;</code> 的每个流槽位。回收的槽位在连接生命周期内累积；
+如果没有有界的收缩，即使负载下降到寥寥几个并发流，
+Vec 也会保持在峰值水位。</p>
+<p><code>h2_stream_shrink_ratio</code>（默认 <code>2</code>，最小 <code>2</code>）控制
+收缩阈值：当 <code>total_slots &gt; active_streams * ratio</code> 时收缩 Vec。
+在内存压力调查时收紧比值；在突发性拓扑上放宽比值，
+以保持槽位预热。</p>
+<p>关注点：Vec 的有效大小尚未作为公开指标 ——
+症状是长生命周期连接上的 RSS 增长与峰值流并发度成正比。
+如果操作员怀疑收缩设置不当，捕获一次 RSS 样本，
+强制降低客户端并发度，一秒后重新采样。</p>
+<h3 id="52-channel-message_len">5.2 Channel <code>message_len</code> 上限<a class="headerlink" href="#52-channel-message_len" title="Permanent link">&para;</a></h3>
+<p>提交：<code>18c251f1</code>。参考：<code>command/src/channel.rs</code>。</p>
+<p>监管器 ↔ worker <code>Channel</code> 帧携带 <code>usize</code> 前缀的消息长度。
+新的上限拒绝任何超过配置 <code>command_buffer_size</code> 的 peer 发送长度，
+这样畸形的 worker 无法诱使监管器分配数 GB 读取缓冲区。
+默认 <code>command_buffer_size = 16384</code> 对于 Sōzu 当前使用的动词来说很宽裕；
+如果您引入的动词载荷确实超出上限，请成对（两端同步）提高它。</p>
+<p>超出上限时，监管器记录日志并丢弃出问题的 peer 会话；
+worker 通过其 channel 上的 EOF 观察到丢弃，
+并由监管器的标准 worker 重生路径重启（当
+<code>worker_automatic_restart</code> 启用时）。</p>
+<h3 id="53-unix-socket">5.3 Unix 命令 socket 注册失败时丢弃<a class="headerlink" href="#53-unix-socket" title="Permanent link">&para;</a></h3>
+<p>提交：<code>b8c8fc61</code>。参考：
+<a href="../../bin/src/command/LIFECYCLE/"><code>../bin/src/command/LIFECYCLE.md</code></a> §2.5。</p>
+<p>如果 <code>mio::Registry::register</code> 对刚接受的命令 socket
+客户端失败（slab 耗尽、FD 无效），监管器现在将其视为终止：
+记录 token + 错误，丢弃 <code>UnixStream</code>，向 peer 发送 RST/EOF。
+此前该失败被吞掉，未连接的会话卡在 client map 中直到手动清理，
+每次发生都泄漏一个 slab token。</p>
+<p>关注点：监管器日志中"register failure"警告突然增多，
+通常表示 slab 耗尽（提高 slab 预算）或其他地方 FD 泄漏；
+丢弃的客户端现在可以在 peer 端观察到 RST 关闭事件。</p>
+<h3 id="54-sni">5.4 SNI 尾部点规范化<a class="headerlink" href="#54-sni" title="Permanent link">&para;</a></h3>
+<p>提交：<code>c5fe3655</code>。</p>
+<p>TLS 握手路径在匹配配置的证书地图之前，
+对客户提供的 SNI 尾部的点号进行规范化。
+没有此修复时，发送 <code>SNI = host.example.com.</code>
+（完全限定 DNS 形式）的客户端会错过
+<code>host.example.com</code> 证书，触发 ALPN 或证书不匹配，
+导致握手关闭。修复在匹配前剥离单个尾部点。</p>
+<p>新的计数器 <code>https.alpn.rejected.unsupported</code>
+（见下方 §5.5）使原先未跟踪的"未知 ALPN 协议"拒绝路径可观测；
+此处文档化以便操作员的"ALPN 拒绝"速率条匹配带标签桶的总和。</p>
+<h3 id="55-httpsalpnrejectedunsupported">5.5 <code>https.alpn.rejected.unsupported</code> 计数器<a class="headerlink" href="#55-httpsalpnrejectedunsupported" title="Permanent link">&para;</a></h3>
+<p>来源：<code>lib/src/https.rs:359</code>。文档见 <code>doc/configure.md:933</code>。</p>
+<p>在 rustls 接受路径上，当协商的 ALPN 协议
+不是显式处理的值（<code>h2</code>、<code>http/1.1</code> 或缺失）时触发。
+此分支之前是静默的 —— 任何绘制
+<code>https.alpn.rejected.*</code> 的操作员仪表板都错过了
+未知协议拒绝（例如 <code>h3</code> 错误通过某种配置错误渗出）。
+将此计数器添加到与
+<code>https.alpn.rejected.http11_disabled</code> 相同的告警桶中。</p>
+<h3 id="56-ensure_frame_size">5.6 <code>ensure_frame_size!</code> 宏<a class="headerlink" href="#56-ensure_frame_size" title="Permanent link">&para;</a></h3>
+<p>来源：<code>lib/src/protocol/mux/parser.rs</code>。</p>
+<p>内部加固说明：H2 帧解析器之前在每个固定大小帧处
+手写"is this fixed-size frame the right length?"检查。
+宏将检查合并，使未来的固定大小帧添加无法因长度混淆类
+CVE 而退化。操作员看不到行为变化；
+实际效果是
+<a href="../../fuzz/#21-fuzz_frame_parser"><code>fuzz_frame_parser</code></a>
+只有一个阻塞点可以断言。</p>
+<hr />
+<h2 id="6">6. 交叉引用<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../configure/"><code>configure.md</code></a> —— 每个可配置旋钮的逐字段参考
+  （默认值、可变性、验证器、指标影响）。</li>
+<li><a href="../../lib/src/protocol/mux/LIFECYCLE/"><code>../lib/src/protocol/mux/LIFECYCLE.md</code></a>
+  —— H2 会话和流生命周期内部。</li>
+<li><a href="../../bin/src/command/LIFECYCLE/"><code>../bin/src/command/LIFECYCLE.md</code></a>
+  —— 监管器 / 命令 socket 生命周期。</li>
+<li><a href="../observability/"><code>observability.md</code></a> —— 日志信封、审计日志
+  字段、指标参考。</li>
+<li><a href="../../fuzz/"><code>../fuzz/README.md</code></a> —— H2 帧 + HPACK
+  模糊测试套件。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Jetsung Chan
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1702 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Sōzu 是一个轻量级、快速且始终在线的反向代理服务器。">
+      
+      
+        <meta name="author" content="Jetsung Chan">
+      
+      
+        <link rel="canonical" href="https://sozu.ooos.top/observability/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.53">
+    
+    
+      
+        <title>可观测性 —— 架构与扩展点 - Sōzu 中文文档</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.20815dad.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="./.." title="Sōzu 中文文档" class="md-header__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sōzu 中文文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              可观测性 —— 架构与扩展点
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="查找">
+  <button type="button" class="md-search__button">
+    查找
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sozu-proxy/sozu
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="Sōzu 中文文档" class="md-nav__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    Sōzu 中文文档
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sozu-proxy/sozu
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  首页
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  介绍
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  介绍
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  入门
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  配置 Sōzu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how_to_use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  如何使用
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configure_cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  命令行配置
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../why_you_should_use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  为什么你应该使用 Sōzu
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design_motivation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  设计动机
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  技巧
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  概述
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  概述
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  架构概述
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools_libraries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  工具和库
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  深入
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  深入
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lifetime_of_a_session/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  会话的生命周期
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../debugging_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  调试策略
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  基准测试
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lexicon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  词汇表
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        拓扑
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        指标原语
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指标原语">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gauge" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gauge 正确性
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauge_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gauge 下溢
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        基数预算
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#drain" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        本地 drain 重置周期
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        日志原语
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="日志原语">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        敏感值日志边界
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        每洪水检测器辅助宏模式
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        访问日志
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        追踪 —— 当前状态
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trail" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        管控面审计 trail
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        扩展检查清单
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        参见
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="_1">可观测性 —— 架构与扩展点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>本文档解释 Sōzu <strong>如何</strong>发出指标、日志、审计事件和追踪上下文，
+接缝在哪里，以及添加新仪器时应遵循哪些约定。
+<strong>当前发出指标和访问日志字段</strong>的清单参见
+<a href="../configure/"><code>configure.md</code></a>。H2 mux 内部实现参见
+<a href="../h2_mux_internals/"><code>h2_mux_internals.md</code></a>。</p>
+<h2 id="_2">拓扑<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>每个 Sōzu worker 是一个<strong>单线程 mio 事件循环</strong>，具有三个并发可观测表面：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                            ┌──────────────────────────────┐
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                            │       worker process          │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                            │                                │
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   accept loop ──┐          │   ┌─ thread-local METRICS ─┐  │       ┌─ statsd UDP ─┐
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   TLS handshake │          │   │                         │──┼──────▶│ network drain│
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   H2 mux        │── incr! ─┼─▶ │   Aggregator            │  │       └──────────────┘
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>   H1 editor     │  count!  │   │  (counters, gauges,     │  │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>   backend pool  │  gauge!  │   │   HDR-time histograms)  │──┼──┐
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>   socket I/O    │  gauge_  │   │                         │  │  │  ┌─ sozu CLI ─┐
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>   …             │  add!    │   └─────────────────────────┘  │  └─▶│ local drain│
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>                 │  time!   │                                 │     └────────────┘
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                            │
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>                            │   log_context!  ─────────────► main log stream
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>                            │   (structured prefix)            (info/warn/error)
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>                            │
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>                            │   log_access!   ─────────────► access log stream
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>                            │   (RequestRecord)               (ASCII or protobuf)
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>                            │
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>                            │   SubscribeEvents bus ───────► control-plane events
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>                            │   (EventKind)                    (incl. audit log line — MUX-style, at info level)
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>                            └──────────────────────────────┘
+</span></code></pre></div>
+<p>三个属性塑造每个扩展点：</p>
+<ol>
+<li><strong>每个 worker 单线程</strong> —— 循环内无 <code>Arc&lt;Mutex&gt;</code>。
+   <code>METRICS</code> 是 <code>thread_local!</code>（<code>lib/src/metrics/mod.rs</code>）。</li>
+<li><strong>边缘触发的 epoll via mio</strong> —— 从读路径排队的任何内容必须
+   在 readiness tracker 上 <code>signal_pending_write</code>
+   （agent memory 中的 <code>feedback_epollet_signal_pending_write</code>）。
+   这只在 metrics socket 本身停滞时影响指标刷新时机 ——
+   对仪器作者通常透明。</li>
+<li><strong>处处使用 <code>&amp;'static str</code> 键</strong> —— 计数器和 gauge 只接受
+   <code>&amp;'static str</code> 键（<code>count_add</code> / <code>set_gauge</code> 的类型签名）。
+   每错误 / 每类别细分必须在编译时实例化键。</li>
+</ol>
+<h2 id="_3">指标原语<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>宏</th>
+<th>签名</th>
+<th>使用场景</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>incr!(key)</code> / <code>incr!(key, cluster_id, backend_id)</code></td>
+<td><code>&amp;'static str</code></td>
+<td>递增 1。3 参数形式带 cluster+backend 标签。</td>
+<td><code>incr!("h2.frames.rx.data");</code></td>
+</tr>
+<tr>
+<td><code>count!(key, value)</code></td>
+<td><code>&amp;'static str, i64</code></td>
+<td>递增 N（如字节计数）。</td>
+<td><code>count!("bytes_in", n as i64);</code></td>
+</tr>
+<tr>
+<td><code>decr!(key)</code></td>
+<td><code>&amp;'static str</code></td>
+<td>递减 1。与之前的 <code>incr!</code> 配对。</td>
+<td><code>decr!("http.active_requests");</code></td>
+</tr>
+<tr>
+<td><code>gauge!(key, value)</code></td>
+<td><code>&amp;'static str, usize</code></td>
+<td><strong>绝对快照。</strong> ⚠️ 各发射点最后写入胜出 —— 仅对单一发射器的代理级状态安全（如 <code>client.connections</code>）。</td>
+<td><code>gauge!("client.connections_max", n);</code></td>
+</tr>
+<tr>
+<td><code>gauge_add!(key, delta)</code> / <code>gauge_add!(key, delta, cluster, backend)</code></td>
+<td><code>&amp;'static str, i64</code></td>
+<td><strong>生命周期增量。</strong> 跨发射点正确聚合。每次 <code>+1</code> 配对关闭路径上的 <code>-1</code>。</td>
+<td><code>gauge_add!("backend.pool.size", 1);</code></td>
+</tr>
+<tr>
+<td><code>time!(key, ms)</code> / <code>time!(key, cluster_id, ms)</code></td>
+<td><code>&amp;'static str, usize</code></td>
+<td>毫秒延迟。以 HDR 直方图存储在本地 drain。</td>
+<td><code>time!("backend_response_time", cluster, ms);</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="gauge">Gauge 正确性<a class="headerlink" href="#gauge" title="Permanent link">&para;</a></h3>
+<p>最常见的指标 bug 是从每连接 / 每流上下文发出 <code>gauge!()</code>：
+仪表板看到的值是"最后写入者写的值"，而非聚合状态。
+<strong>默认使用 <code>gauge_add!()</code> 用于从多个发射点递增的指标。</strong>
+H2 连接 gauge（<code>h2.connection.{active_streams,window_bytes,pending_window_updates}</code>）
+在未发现此 bug 一段时间后转换为 <code>gauge_add!</code> 生命周期增量
+加上 <code>impl Drop</code> 对称清理。</p>
+<h3 id="gauge_1">Gauge 下溢<a class="headerlink" href="#gauge_1" title="Permanent link">&para;</a></h3>
+<p>过去的生产事故（<code>a650ad69</code>、<code>d2f01ed4</code>）都来自
+<code>gauge_add!(-1)</code> 在没有先运行配对 <code>+1</code> 的情况下运行。
+<code>MetricValue::update</code> 和 <code>AggregatedMetric::update</code> 都将值饱和到 0，
+并在 debug 和 release 构建中发出单行 <code>error!</code> 日志；都不 panic。
+下次快照时指标仍错误，但进程继续运行，日志行命名出问题的键。
+两种模式防止此类 bug：</p>
+<ol>
+<li><strong>将增减与跟踪的状态共位。</strong> 如果 gauge 测量"活跃后端连接"，
+   在后端连接创建的同一点发出 <code>+1</code>，在关闭的同一点发出 <code>-1</code>。</li>
+<li><strong>当关闭路径散布在代码库中时，将清理移入 <code>impl Drop</code></strong>
+   （优雅关机、强制断开、panic-unwind）。
+   <code>impl Drop for ConnectionH2</code> 是典范示例：
+   无论哪条关闭路径运行，它减去连接曾经发出的任何
+   <code>gauge_add!(+N)</code>。</li>
+</ol>
+<h3 id="_4">基数预算<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>StatsD（UDP）宽容但 Prometheus / influxdb 不宽容。两条规则：</p>
+<ol>
+<li><strong>仅静态键。</strong> 键是 <code>&amp;'static str</code> —— 通过 <code>concat!</code>、
+   字面量或启动时 <code>LazyLock</code> 泄漏在编译时合成。
+   每 IP 标签必须哈希到有界桶表（参见
+   <code>lib/src/server.rs::PER_SOURCE_BUCKETS</code> 的典范 256 桶模式
+   带 <code>LazyLock</code> 静态字符串数组）。</li>
+<li><strong>可选粒度。</strong> <code>MetricDetail</code>（proto）/
+   <code>MetricDetailLevel</code>（config）让操作员选择
+   <code>process | frontend | cluster | backend</code>。
+   镜像 HAProxy 的 <code>extra-counters</code> 可选。
+   新标签维度应尊重此旋钮；接线层是后续 MR。</li>
+</ol>
+<h3 id="drain">本地 drain 重置周期<a class="headerlink" href="#drain" title="Permanent link">&para;</a></h3>
+<p>本地 drain（<code>LocalDrain</code> in <code>lib/src/metrics/local_drain.rs</code>）
+维护两张地图：<code>proxy_metrics</code>（代理级）和 <code>cluster_metrics</code>
+（每集群 + 每后端）。<strong>两者自 worker 启动以来都是累积的。</strong>
+没有自动计时器重置它们 —— 曾经每秒 UTC 整点清除
+<code>cluster_metrics</code> 的 wall-clock <code>if now.minute() == 0
+&amp;&amp; now.second() == 0</code> 块被移除了，因为它在操作员仪表板中
+产生虚假尖刺 / 归零，并且 gauge 必须在清除之间保留
+（长生命周期 H2 会话可能在清除后关闭并使 gauge 计数器下溢）。
+想要重置的操作员发出 <code>sozu metrics clear</code>（proto：
+<code>MetricsConfiguration::Clear</code>），一次性清空两张地图
+AND 清空 master 进程自己的 <code>main_metrics</code>。
+<code>RemoveCluster</code> / <code>RemoveBackend</code> IPC 时也丢弃每集群条目，
+因此退役集群不会泄漏指标键；在 StatsD
+<code>network_drain</code> 上，相同两个事件丢弃集群的
+<code>cluster_metrics</code>、<code>backend_metrics</code> 和排队 <code>MetricLine</code>s，
+因此线端立即静音（集群的任何未发送 statsd 区间被丢弃 ——
+有界于硬编码在 <code>NetworkDrain::send_metrics</code> 中的一秒网络 drain 周期）。</p>
+<p><code>RemoveCluster</code> 也为每个 drain 设置墓碑（<code>removed_clusters:
+HashSet&lt;String&gt;</code>），以便后续对同一集群 ID 的发射在地板上丢弃，
+而非通过 <code>entry().or_default()</code> 复活行。这在生产中有意义：
+<code>lib/src/http.rs</code> / <code>https.rs</code> / <code>tcp.rs</code> 中的每代理
+<code>remove_cluster</code> 路径丢弃集群配置但不关闭进行中的会话，
+因此长生命周期 H2 / WebSocket / TCP 会话继续为已删除集群
+发出访问日志 / 响应时间 / gauge 指标。没有墓碑，这些发射
+会继续增长集群行直到最后会话关闭；有了墓碑，线和本地
+drain 保持安静。墓碑在相同 ID 的 <code>AddCluster</code> 上清除
+（集群可以在删除后回来）和 <code>sozu metrics clear</code> 上清除
+（操作员发起的全量重置）。</p>
+<p>对仪表盘的启示：<code>sozu metrics</code> 输出中的计数器是单调的；
+图表应计算 <code>rate()</code> / <code>irate()</code> 而非将连续快照视为窗口计数。
+直方图自 worker 启动以来累积每个样本，因此
+<code>Percentiles.p_99</code> 是生命周期 p99，而非窗口化的。</p>
+<p>每桶计数器是 <code>u64</code>，因此在现实 uptime / RPS 组合下无需担心饱和。</p>
+<p>操作员清除注意事项：在实时流量期间发出 <code>sozu metrics clear</code>
+会重置进行中的 gauge 准确性。在清除前打开的会话并在关闭时
+递减 gauge（如 <code>connections_per_backend</code>）落在饱和到零的路径上，
+每次发生发出单行 <code>error!</code> 日志，命名出问题的键。这是故意的；
+新会话到达时 gauge 恢复。想要重置计数但保持活跃 gauge 完整
+的操作员不应使用 <code>sozu metrics clear</code> —— 等待仪表板数学中
+的累积计数器回绕。</p>
+<h2 id="_5">日志原语<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>通过每协议 <code>log_context!</code> / <code>log_module_context!</code> /
+<code>log_context_lite!</code> 宏的结构性前缀 —— 每文件定义：</p>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>文件</th>
+<th>携带</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MUX</code></td>
+<td><code>protocol/mux/mod.rs</code></td>
+<td>session ULID, peer/local, frontend, backend list</td>
+</tr>
+<tr>
+<td><code>MUX-H2</code></td>
+<td><code>protocol/mux/h2.rs</code></td>
+<td>…plus position, state, total RST counts, draining</td>
+</tr>
+<tr>
+<td><code>MUX-H1</code></td>
+<td><code>protocol/mux/h1.rs</code></td>
+<td>…plus stream id, parked, close_notify</td>
+</tr>
+<tr>
+<td><code>MUX-ROUTER</code></td>
+<td><code>protocol/mux/router.rs</code></td>
+<td>通过 <code>HttpContext::log_context()</code> 渲染 <code>[session req cluster backend]</code></td>
+</tr>
+<tr>
+<td><code>MUX-CONN</code> / <code>MUX-CONV</code> / <code>MUX-PARSER</code> / <code>MUX-PKAWA</code> / <code>MUX-STREAM</code></td>
+<td>对应文件</td>
+<td>仅模块级（无 per-session 上下文）</td>
+</tr>
+<tr>
+<td><code>KAWA-H1</code></td>
+<td><code>protocol/kawa_h1/mod.rs</code></td>
+<td>session, frontend, request/response parsing phase</td>
+</tr>
+<tr>
+<td><code>RUSTLS</code></td>
+<td><code>protocol/rustls.rs</code></td>
+<td>SNI/ALPN byte lengths, version, source, frontend</td>
+</tr>
+<tr>
+<td><code>PIPE</code></td>
+<td><code>protocol/pipe.rs</code></td>
+<td>addresses, frontend/backend status &amp; readiness</td>
+</tr>
+<tr>
+<td><code>TCP</code></td>
+<td><code>tcp.rs</code></td>
+<td>frontend, backend, peer (缓存于 <code>SessionTcpStream</code>)</td>
+</tr>
+<tr>
+<td><code>SOCKET</code></td>
+<td><code>socket.rs</code></td>
+<td>session, peer, local, RTT, state</td>
+</tr>
+</tbody>
+</table>
+<p><strong>约定：</strong></p>
+<ul>
+<li>使用文件中定义的宏。不要从协议代码直接调用
+  <code>log::info!</code>/<code>log::error!</code> —— 前缀标签对日志搜索是负载性的。</li>
+<li>按意图分级严重性：<code>debug!</code>/<code>trace!</code> 用于预期的空闲关闭、
+  超时、嘈杂状态。<code>warn!</code>/<code>error!</code> 用于真正的协议错误或
+  不变式破坏。（参见 <code>feedback_log_context_before_theorising</code> 的推理。）</li>
+<li>当 <code>HttpContext</code> 在作用域内时，优先使用
+  <code>$http_ctx.log_context()</code>（<code>kawa_h1/editor.rs:587</code>）
+  而非手工滚动 <code>LogContext { ... }</code> 结构体字面量 ——
+  辅助函数是规范格式化器。</li>
+</ul>
+<h3 id="_6">敏感值日志边界<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><code>Debug</code> 在 Sōzu 中是生产日志投影，而非无损检查格式。
+通用日志站点格式化命令请求、worker 响应、保留任务和状态、
+router/listener 错误和 TLS 运行时对象使用 <code>{:?}</code>。
+因此那些路径可达的每种类型必须在其字段可包含操作员或
+客户控制材料时产生有界元数据。</p>
+<p>受保护材料包括证书和私钥内容、链、证书名称和指纹、
+证书查询域和结果、集群标识符、HTTP 路由 host/path/method/tag、
+重定向和重写值、TCP SNI 和 ALPN 值、自定义答案键和身体、
+和头名称和值。它们的日志投影可能仅保留操作有用的元数据，
+如 socket 地址、枚举变体、布尔值、存在标志、集合计数和
+聚合字节长度。证书和键槽除了其长度外渲染为 <code>[redacted]</code>。</p>
+<p>典范的 <code>[session request cluster backend]</code> 前缀是显式
+关联信封，不是通用对象转储：其 cluster/backend 槽保持无损，
+以便操作员为一请求连接行。相同标识符在 <code>Debug</code> 输出、
+保留任务/状态转储、错误文本或临时消息字段中出现时必须仍有界。
+此例外仅限于命名的关联槽；它不允许在 verbose <code>Session(...)</code>
+主体中包含原始 authority、path、method、SNI、ALPN、证书 SAN
+或请求载荷字段。</p>
+<p>在每个可到达日志sink的层应用边界：</p>
+<ul>
+<li>携带敏感字段的生成 protobuf 类型在 <code>command/build.rs</code>
+  中通过 <code>prost_build::Config::skip_debug</code> 列出；它们的
+  有界实现在 <code>command/src/proto/mod.rs</code>。顶级
+  <code>Request</code> 和其 <code>RequestType</code> 枚举仅渲染详尽请求种类，
+  因此字符串值动词直接在 <code>WorkerRequest</code> 内也有界。</li>
+<li>配置、响应、保留状态、gatherer、router、listener 和 TLS
+  包装器必须总结自己的集合和字符串键地图，而非依赖
+   enclosing 类型隐藏它们。<code>TaskContainer</code> 仅渲染
+  具体任务种类和 timeout 存在；它从不委托给保留的
+  <code>GatheringTask</code> 的 <code>Debug</code> 实现。</li>
+<li>直接 <code>debug!</code>、<code>info!</code>、<code>warn!</code>、<code>error!</code> 和失败消息
+  投影必须插值相同计数、种类、地址和字节长度。
+  安全的 <code>Debug</code> 实现不能保护直接格式化原始字段的日志语句。
+  TLS preread/handshake 和 mux 路由日志因此渲染
+  cluster/authority/SNI/ALPN/SAN 计数、匹配种类和聚合
+  字节长度而非单个值。</li>
+<li>错误和 poisoned-lock 路径遵循相同规则；异常控制流
+  不是披露被拒绝值或保留对象的权限。</li>
+</ul>
+<p>这刻意是仅日志边界。protobuf wire 编码、Serde/JSON 输出、
+保留状态键、证书查询响应载荷和存储在 <code>StateError</code>、
+<code>RouterError</code> 和 <code>RetrieveClusterError::SniAuthorityMismatch</code>
+中的原始字段保持不变。这些错误类型仅 bound <code>Display</code>/<code>Debug</code>；
+匹配其公共变体的调用方仍接收完整标识符、前端键、拒绝原因、
+host、path、method、SNI 值和 authorities。
+用于操作/状态键的 <code>RequestHttpFrontend::Display</code> 也保持无损。
+明确授权检索这些值的调用方继续接收它们；通用诊断不。</p>
+<p>回归测试对每个受保护字段使用不同长哨兵，并断言合同的三部分：
+哨兵不存在、预期计数/长度元数据存在、输出保持在固定大小界限内。
+覆盖必须包括叶 <code>Debug</code> 实现、通用/嵌套命令包装器、
+保留状态或任务、直接日志语句和运行时 TLS 及错误路径（如适用）。</p>
+<h3 id="_7">每洪水检测器辅助宏模式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>当违规漏斗（<code>H2FloodViolation</code>、<code>RustlsError</code>、<code>H2Error</code>）
+需要每个变体的 <code>&amp;'static str</code> 指标键时，定义 <code>concat!</code>-based 宏：</p>
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="fm">macro_rules!</span><span class="w"> </span><span class="n">h2_error_metric_key</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="p">(</span><span class="cp">$prefix</span><span class="p">:</span><span class="nc">literal</span><span class="p">,</span><span class="w"> </span><span class="cp">$error</span><span class="p">:</span><span class="nc">expr</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="k">match</span><span class="w"> </span><span class="cp">$error</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">            </span><span class="n">H2Error</span><span class="p">::</span><span class="n">NoError</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">concat!</span><span class="p">(</span><span class="cp">$prefix</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.no_error&quot;</span><span class="p">),</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="n">H2Error</span><span class="p">::</span><span class="n">ProtocolError</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="fm">concat!</span><span class="p">(</span><span class="cp">$prefix</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;.protocol_error&quot;</span><span class="p">),</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">            </span><span class="c1">// …14 臂，穷举 —— 添加新 H2Error 变体在此处使构建失败</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="p">};</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>然后用每个方向一个辅助函数包装：</p>
+<div class="language-rust highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">fn</span><span class="w"> </span><span class="nf">metric_for_goaway_sent</span><span class="p">(</span><span class="n">error</span><span class="p">:</span><span class="w"> </span><span class="nc">H2Error</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="kp">&amp;</span><span class="o">&#39;</span><span class="nb">static</span><span class="w"> </span><span class="kt">str</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">h2_error_metric_key</span><span class="o">!</span><span class="p">(</span><span class="s">&quot;h2.goaway.sent&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">error</span><span class="p">)</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>这使细分与底层枚举同步（新变体使构建失败），同时保留
+<code>&amp;'static str</code> 语义。</p>
+<h2 id="_8">访问日志<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>模式在 <code>command/src/logging/access_logs.rs::RequestRecord</code>
+中，protobuf wire 形状在
+<code>command/src/command.proto::ProtobufAccessLog</code>。添加字段需要：</p>
+<ol>
+<li><code>RequestRecord&lt;'a&gt;</code> 上的字段（Rust 结构体，
+   <code>lib/src/protocol/...</code> 填充）。</li>
+<li><code>ProtobufAccessLog</code> 上的字段（proto，追加新可选标签 ——
+   从不重用或重新排序现有标签）。</li>
+<li>在每个发射点填充：</li>
+<li>H1: <code>lib/src/protocol/kawa_h1/mod.rs::log_request</code></li>
+<li>H2 mux: <code>lib/src/protocol/mux/stream.rs::generate_access_log</code></li>
+<li>TCP: <code>lib/src/tcp.rs::log_request</code></li>
+<li>WS / WSS 升级后 pipe: <code>lib/src/protocol/pipe.rs::log_request</code></li>
+<li>更新 <code>access_logs.rs</code> 中的 <code>RequestRecord::duplicate()</code>，
+   以便 protobuf 路径序列化新字段。</li>
+<li>在 <a href="../configure/"><code>configure.md</code></a> §OpenTelemetry / §TLS
+   握手元数据中记录该字段。</li>
+</ol>
+<p>TLS 元数据字段（<code>tls_version</code>、<code>tls_cipher</code>、<code>tls_sni</code>、
+<code>tls_alpn</code>）来自 <code>lib/src/https.rs</code> 的 rustls 握手上下文，
+通过 <code>mux::Context</code> 传入 <code>HttpContext</code>。pipe 路径通过
+<code>https.rs::upgrade_mux</code> 调用的 <code>Pipe::set_tls_metadata</code>
+拾取它们。</p>
+<h2 id="_9">追踪 —— 当前状态<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p><strong>这只是 W3C <code>traceparent</code> 直通。</strong> 无数 span 生命周期、
+OTLP exporter、SDK 依赖。在 <code>opentelemetry</code> 编译时特性标志后：</p>
+<ul>
+<li><code>traceparent</code> 在
+  <code>lib/src/protocol/kawa_h1/editor.rs::on_request_headers</code>
+  中解析（同一回调在 H1 上和通过 <code>pkawa.rs</code> 解码的 H2 帧上运行）。</li>
+<li>为每个 Sōzu 跳生成新 span ID；值在出站请求上重写并存储在
+  <code>HttpContext.otel</code> 上。</li>
+<li>访问日志暴露 <code>trace_id</code>、<code>span_id</code>、<code>parent_span_id</code>。</li>
+<li>访问日志包含 <code>start_time</code>（proto field 30, <code>Uint128</code>,
+  纳秒纪元）—— 在请求开始时通过
+  <code>SessionMetrics::mark_request_start()</code> 捕获的 wall-clock 时间戳。
+  重建 OTel spans 的消费者应优先使用此字段而非
+  <code>time - request_time</code>，后者混合 <code>CLOCK_REALTIME</code> 和
+  <code>CLOCK_MONOTONIC</code>，在短生命周期请求上产生不可靠的开始时间戳。</li>
+</ul>
+<p>要更进一步（真实 spans、OTLP exporter、B3/Datadog 传播），
+参见 <a href="../configure/"><code>configure.md</code></a> 中的"超出范围"节。
+它将位于新特性标志后，而非扩展 <code>opentelemetry</code> 的范围。</p>
+<h2 id="trail">管控面审计 trail<a class="headerlink" href="#trail" title="Permanent link">&para;</a></h2>
+<p>unix 命令 socket 上的每个特权变更（<code>AddCluster</code>、
+<code>RemoveCertificate</code>、<code>ActivateListener</code>、…）经过三个可观测表面：</p>
+<ol>
+<li>匹配的 <code>EventKind</code> 的 <code>Event</code> 发布到
+   <code>SubscribeEvents</code> 总线。14 个变更变体枚举在
+   <code>command/src/command.proto::EventKind</code>。</li>
+<li><code>incr!("config.&lt;verb&gt;")</code> 计数器递增（如
+   <code>config.cluster_added</code>）。</li>
+<li>在 MUX 家族布局中以 <code>info!</code> 级别发出结构化审计日志行
+   （关键字 <code>Command(...)</code> 而非 <code>Session(...)</code>，后者命名
+   数据平面会话）。每个自由表单字段（<code>target</code>、
+   <code>actor_comm</code>、<code>actor_user</code>、<code>socket</code>、<code>reason</code>）
+   在渲染时消毒 —— 控制字符（<code>\x00..=\x1f</code>、<code>\x7f</code>）
+   替换为 <code>?</code>，因此攻击者影响输入无法通过嵌入的
+   <code>\t</code> / <code>\n</code> / ANSI 转义伪造额外审计行。渲染形式
+   （ANSI 颜色关闭）：</li>
+</ol>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[01HXS4GZ9EYP3F2R7K8M6B4N2C 01HXS4H5K2QR9C7PVWXY8T6ZNA my_app -] AUDIT   Command(verb=cluster_added, actor_uid=1000, actor_gid=1000, actor_pid=12345, actor_user=florentin, actor_comm=sozu, client_id=42, socket=/run/sozu/sozu.sock, target=cluster:my_app, result=ok, sozu_version=1.1.1)
+</span></code></pre></div>
+<p>### 字段参考</p>
+<p><strong>必填字段</strong>（始终存在）：</p>
+<ul>
+<li><code>verb</code> —— 审计操作的稳定静态标识符
+     （如 <code>cluster_added</code>、<code>state_loaded</code>、<code>listener_updated</code>）。
+     每个 verb 一个 <code>config.&lt;verb&gt;</code> statsd 计数器。</li>
+<li><code>actor_uid</code> / <code>actor_gid</code> / <code>actor_pid</code> —— 来自
+     unix 命令 socket 的 <code>SO_PEERCRED</code> 的对端凭据。
+     读取失败 / 非 Linux 构建时为 <code>unknown</code>。</li>
+<li><code>actor_user</code> —— 解析的 POSIX 账户名
+     （接受时的 <code>getpwuid_r(uid)</code>）。NSS 无 UID 匹配时为 <code>unknown</code>。</li>
+<li><code>actor_comm</code> —— 接受时的 <code>/proc/&lt;pid&gt;/comm</code>
+     （最多 15 字符），让 SOC 区分带 <code>command</code> 子命令的
+     <code>sozu</code> 二进制与共享 UID 的 ad-hoc shell。</li>
+<li><code>client_id</code> —— 每次接受单调计数器。不同于
+     <code>session_ulid</code> 括号槽，后者作为单个 sozu CLI
+     调用发出的每个 verb 的 grep 关联键存活。</li>
+<li><code>socket</code> —— 客户端连接的命令 socket 路径。
+     让共享 SIEM sink 的多实例 sozu 部署选择
+     每条行由哪个实例发出。</li>
+<li><code>target</code> —— verb 特定的自由表单描述符
+     （如 <code>cluster:my-cluster</code>、<code>file:/var/lib/sozu/state.bin</code>、
+     <code>stop:hard</code>、<code>listener:http:127.0.0.1:8080</code>）。
+     对于 <code>UpdateHttp/Https/TcpListener</code>，每个补丁字段渲染为
+     <code>field=old→new</code>。对于 <code>ReplaceCertificate</code>，
+     旧和新证书指纹都包含（<code>certificate:&lt;addr&gt;:old=&lt;fp&gt;:new=&lt;fp&gt;</code>）。
+     已消毒。</li>
+<li><code>result</code> —— <code>ok</code> 或 <code>err</code>。</li>
+<li><code>sozu_version</code> —— 构建时的 <code>CARGO_PKG_VERSION</code>。
+     混合 fleet 审计流的取证钉。</li>
+</ul>
+<p><strong>可选字段</strong>（相关时出现）：</p>
+<ul>
+<li><code>error_code</code> —— 结构化失败桶：
+     <code>dispatch_error</code>、<code>worker_failure</code>、<code>worker_timeout</code>、
+     <code>peer_cred_unavailable</code>、<code>invalid_input</code>、<code>io_error</code>、
+     <code>other</code>。当 <code>result=err</code> 时存在。</li>
+<li><code>reason</code> —— 截断的人类可读失败详情（最多 256 字符，已消毒）。
+     与 <code>error_code</code> 配对。</li>
+<li><code>elapsed_ms</code> —— 请求接受到审计发射之间的 wall-clock 时间。
+     在完成时行上设置。</li>
+<li><code>fanout</code> —— worker fan-out 结果：
+     <code>ok</code>、<code>partial</code>、<code>timeout</code> 或 <code>local_only</code>。
+     对在 worker 上散射的 verb 在完成时设置。</li>
+<li><code>workers</code> —— 每 worker 计数
+     <code>&lt;ok&gt;/&lt;err&gt;/&lt;expected&gt;</code>。与 <code>fanout</code> 配对。</li>
+<li><code>request_sha256</code> —— proto <code>Request</code> wire 编码的
+     截断（64-bit，16 十六进制字符）SHA-256。
+     对在 <code>worker_request</code> 流经的 verb 设置。
+     用于去重 / 重放检测。</li>
+</ul>
+<p>### 专用 sink：<code>audit_logs_target</code></p>
+<p>操作员可以通过 <code>audit_logs_target</code> 配置选项将审计行路由到
+   专用文件（区别于 <code>log_target</code>）。设置为纯文件系统路径
+   （如 <code>/var/log/sozu/audit.log</code>）让每条审计行也追加到那里。
+   文件以 <code>O_APPEND | O_CREAT</code> 和模式 <code>0o640</code>（所有者读写，
+   组读）打开，因此授予 <code>audit</code> 组 tail-only 访问是一个
+   文件系统 ACL 之遥。ANSI 转义序列在写入专用 sink 前剥离，
+   因此文件保持 SIEM 可解析即使 <code>log_colored = true</code>。
+   写入失败记录警告但不阻塞变更。
+   <code>None</code>（默认）保持审计行仅通过 <code>log_target</code> 路由。</p>
+<p>### JSON sink：<code>audit_logs_json_target</code></p>
+<p>对于偏好不解析人类可读行的 SIEM 管道，
+   <code>audit_logs_json_target</code> 将每行结构化 JSON 对象写入
+   专用文件。相同 <code>O_APPEND | O_CREAT | 0o640</code> 语义。
+   模式稳定；每个键始终存在，缺失值为 JSON <code>null</code>：</p>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">&quot;ts&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-04-23T13:14:15.123456Z&quot;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span><span class="nt">&quot;boot_generation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">&quot;session_ulid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;01HXS4GZ9EYP3F2R7K8M6B4N2C&quot;</span><span class="p">,</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nt">&quot;request_ulid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;01HXS4H5K2QR9C7PVWXY8T6ZNA&quot;</span><span class="p">,</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="nt">&quot;actor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;gid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;pid&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;florentin&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;comm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sozu&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="nt">&quot;client_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="nt">&quot;connect_ts&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-04-23T13:14:14.500000Z&quot;</span><span class="p">,</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span><span class="nt">&quot;socket&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/run/sozu/sozu.sock&quot;</span><span class="p">,</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="nt">&quot;verb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cluster_added&quot;</span><span class="p">,</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cluster:my_app&quot;</span><span class="p">,</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="nt">&quot;result&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="nt">&quot;cluster_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_app&quot;</span><span class="p">,</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="nt">&quot;backend_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="nt">&quot;sozu_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.1&quot;</span><span class="p">,</span>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="nt">&quot;build_git_sha&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9a1b2c3d4e5f&quot;</span><span class="p">,</span>
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span><span class="nt">&quot;extras&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nt">&quot;elapsed_ms&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span>
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="nt">&quot;fanout&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;workers_ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;workers_err&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;workers_expected&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="nt">&quot;request_sha256&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0123456789abcdef&quot;</span>
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>两个 sink 独立 —— 同时设置以获得操作员友好的 tail 流
+   + 机器可解析归档。</p>
+<p>### 保留策略</p>
+<p>PCI-DSS 10.7 要求审计 trail <strong>保留 ≥ 1 年</strong>，
+   最近 <strong>3 个月立即可用</strong>进行分析。ISO 27001 A.8.15
+   推荐类似但推迟到组织政策。</p>
+<p><code>audit_logs_target</code> 和 <code>audit_logs_json_target</code> 是
+   操作员 logrotate / 归档管道下的追加-only 文件 ——
+   Clever Cloud Linux 部署的推荐形状是：</p>
+<ul>
+<li><code>/etc/logrotate.d/sozu</code> 每天旋转
+     <code>/var/log/sozu/audit*.{log,jsonl}</code>，
+     1 天后用 <code>xz</code> 压缩，90 天后归档离站。</li>
+<li>离站归档桶保留 <strong>400 天</strong>以清除 PCI-DSS 1 年窗口带缓冲。</li>
+<li>通过 <code>setfacl -m g:audit:r-x /var/log/sozu/</code>
+     限制主机上读访问；仅 <code>audit</code> 组应能 tail 活文件。</li>
+<li>每行 stamped 的 <code>Server.boot_generation</code> 字段让
+     日志分析器拼接跨热升级 re-exec 的会话而无需信任 PID。</li>
+</ul>
+<p>Sōzu 自身不旋转或压缩审计文件 —— 委托给 OS 级 rotator。
+   想要原生旋转的操作员应使用带 <code>copytruncate</code> 指令的
+   <code>logrotate</code>（因为 sōzu 保持文件句柄打开）或在 rename 后
+   发送 <code>SIGHUP</code> 触发重新打开（尚未实现 —— TODO）。</p>
+<p>### 每个 worker 散射 verb 两行</p>
+<p>散射到每个 worker 的 verb（AddCluster、RemoveHttpFrontend、
+   UpdateHttpsListener、AddCertificate、…）发出<strong>两条</strong>
+   审计行：</p>
+<ul>
+<li><strong>尝试时</strong>：<code>result=ok</code> 意味着"被主进程状态接受"。
+     在 <code>state.dispatch</code> 成功后立即触发。无 fanout / elapsed_ms。</li>
+<li><strong>完成时</strong>：每个 worker 响应后（或散射超时触发）发出。
+     携带 <code>fanout=ok|partial|timeout</code>、
+     <code>workers=&lt;ok&gt;/&lt;err&gt;/&lt;expected&gt;</code>、<code>elapsed_ms</code>、
+     和 —— 当 <code>result=err</code> 时 —— <code>error_code</code> + <code>reason</code>。</li>
+</ul>
+<p>操作员通过共享的
+   <code>[session_ulid request_ulid …]</code> 括号关联两者。</p>
+<p>### 仅本地 verb</p>
+<p>不散射的 verb —— <code>SoftStop</code>/<code>HardStop</code> 请求、
+   <code>LoggingLevelChanged</code>、<code>UpgradeMain</code> / <code>UpgradeWorker</code>
+   初始化、<code>SubscribeEvents</code>、<code>SaveState</code> 和
+   <code>LoadState</code> 完成 —— 发出单条审计行携带
+   <code>result</code> 和（如适用）<code>error_code</code> + <code>reason</code>。
+   <code>LoadState</code> 和 <code>SaveState</code> 在 <code>target=file:&lt;path&gt;</code>
+   中嵌入 <code>ok:&lt;n&gt; errors:&lt;n&gt;</code> 计数。</p>
+<p>括号槽遵循与 <code>MUX</code> / <code>MUX-ROUTER</code> / <code>RUSTLS</code> / <code>PIPE</code> /
+   <code>TCP</code> 行共享的
+   <code>[session_ulid request_ulid cluster_id|- backend_id|-]</code>
+   约定。</p>
+<p><code>actor_uid</code> 通过 <code>SO_PEERCRED</code> 在 unix socket 接受时捕获
+（<code>bin/src/command/server.rs</code>，存储在
+<code>ClientSession.actor_uid</code>）。失败系统调用或非 Linux 构建
+折叠为 <code>actor_uid=unknown</code> 而非 panic。这满足
+PCI-DSS 10.2 / ISO 27001 A.8.15 / SOC 2 审计 trail
+要求而无需外部审计 shim。</p>
+<p>添加新审计 verb：</p>
+<ol>
+<li>在 proto 中添加 <code>EventKind</code> 变体（保留现有标签）。</li>
+<li>更新 <code>command/src/proto/display.rs</code> 中的 <code>Display for Event</code>。</li>
+<li>在 <code>bin/src/command/requests.rs</code> 处理器中：</li>
+<li>将 <code>Event</code> 推送到总线（找现有
+     <code>EventKind::CLUSTER_ADDED</code> 发射点复制）。</li>
+<li>发射 <code>incr!("config.&lt;verb&gt;")</code>。</li>
+<li>通过 <code>audit_log_context!</code> 宏在
+     <code>bin/src/command/requests.rs</code> 中发射审计行 ——
+     它自动将 verb 渲染到 MUX
+     <code>Session(verb=..., actor_uid=..., client_id=...,
+     target=..., result=...)</code> 块中。</li>
+</ol>
+<h2 id="_10">扩展检查清单<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>合并仪器变更前：</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 指标键是 <code>&amp;'static str</code>（编译时字面量或 <code>LazyLock</code> 泄漏）。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 每方向 / 每错误 / 每帧细分使用 <code>concat!</code>-based 辅助宏，
+  使构建在新枚举变体时失败。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 基数有界 —— 要么无标签，要么标签来自固定大小表，
+  要么哈希到已知大小的桶中。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 从多个点发射的 gauge 使用 <code>gauge_add!</code>（生命周期增量）
+  并在关闭路径上将每个 <code>+N</code> 与 <code>-N</code> 配对。考虑
+  <code>impl Drop</code> 用于对称清理。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 新协议模块定义自己的 <code>log_context!</code> /
+  <code>log_module_context!</code> 带唯一前缀标签。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 从敏感命令、状态、路由或 TLS 数据可达的类型和直接
+  日志站点仅暴露有界计数/长度/种类/地址，带有
+  哨兵缺席和固定输出界限回归测试。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 新访问日志字段落在 <code>RequestRecord</code>、
+  <code>ProtobufAccessLog</code>（新标签）、所有四个发射点和
+  <code>RequestRecord::duplicate()</code> 上。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="../configure/"><code>configure.md</code></a> 在同一 changeset 中更新。</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 特权管控面 verb 落地 <code>EventKind</code> +
+  <code>config.&lt;verb&gt;</code> 计数器 + 审计日志行
+  （MUX <code>Session(...)</code> 布局、<code>info!</code> 级别、
+  通过 <code>audit_log_context!</code> 宏路由）。</li>
+</ul>
+<h2 id="_11">参见<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../configure/"><code>configure.md</code></a> —— 当前发出指标、访问日志字段、
+  OpenTelemetry 通穿的完整清单。</li>
+<li><a href="../h2_mux_internals/"><code>h2_mux_internals.md</code></a> —— H2 mux 状态机
+  和洪水检测器设计。</li>
+<li><a href="../../lib/src/protocol/mux/LIFECYCLE/"><code>lib/src/protocol/mux/LIFECYCLE.md</code></a>
+  —— 带 <code>file.rs:LINE</code> 引用 的流/槽生命周期。</li>
+<li><a href="../../CLAUDE/"><code>CLAUDE.md</code></a> —— agent 约定包括日志宏纪律、
+  指标宏列表和安全敏感区域。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Jetsung Chan
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
+      
+    
+  </body>
+</html>
