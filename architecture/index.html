@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.11">
+      <meta name="generator" content="zensical-0.0.53">
     
     
       
@@ -36,7 +36,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.bd6182e7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.20815dad.min.css">
       
         
           
@@ -44,35 +44,6 @@
         <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  <style>:root{}</style>
-
 
 
     
@@ -84,12 +55,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -110,7 +81,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
     <div data-md-component="skip">
       
         
@@ -130,13 +101,13 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Sōzu 中文文档" class="md-header__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+    <a href="./.." title="Sōzu 中文文档" class="md-header__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
@@ -190,7 +161,7 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
@@ -206,7 +177,7 @@
         <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     sozu-proxy/sozu
@@ -239,10 +210,10 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Sōzu 中文文档" class="md-nav__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+    <a href="./.." title="Sōzu 中文文档" class="md-nav__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
     Sōzu 中文文档
@@ -252,7 +223,7 @@
       <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     sozu-proxy/sozu
@@ -269,15 +240,14 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="./.." class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    首页
-  
+  首页
 
     
   </span>
@@ -337,8 +307,7 @@
   <span class="md-ellipsis">
     
   
-    介绍
-  
+  介绍
 
     
   </span>
@@ -353,8 +322,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    介绍
-  
+  介绍
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -373,8 +341,7 @@
   <span class="md-ellipsis">
     
   
-    入门
-  
+  入门
 
     
   </span>
@@ -401,8 +368,7 @@
   <span class="md-ellipsis">
     
   
-    配置 Sōzu
-  
+  配置 Sōzu
 
     
   </span>
@@ -429,8 +395,7 @@
   <span class="md-ellipsis">
     
   
-    如何使用
-  
+  如何使用
 
     
   </span>
@@ -457,8 +422,7 @@
   <span class="md-ellipsis">
     
   
-    命令行配置
-  
+  命令行配置
 
     
   </span>
@@ -485,8 +449,7 @@
   <span class="md-ellipsis">
     
   
-    为什么你应该使用 Sōzu
-  
+  为什么你应该使用 Sōzu
 
     
   </span>
@@ -513,8 +476,7 @@
   <span class="md-ellipsis">
     
   
-    设计动机
-  
+  设计动机
 
     
   </span>
@@ -541,8 +503,7 @@
   <span class="md-ellipsis">
     
   
-    技巧
-  
+  技巧
 
     
   </span>
@@ -600,8 +561,7 @@
   <span class="md-ellipsis">
     
   
-    概述
-  
+  概述
 
     
   </span>
@@ -616,8 +576,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    概述
-  
+  概述
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -632,7 +591,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -645,8 +604,7 @@
   <span class="md-ellipsis">
     
   
-    架构概述
-  
+  架构概述
 
     
   </span>
@@ -656,15 +614,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    架构概述
-  
+  架构概述
 
     
   </span>
@@ -692,9 +649,9 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         主/工作进程模型
-      
+      </span>
     </span>
   </a>
   
@@ -704,9 +661,9 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         单线程，无共享架构
-      
+      </span>
     </span>
   </a>
   
@@ -715,9 +672,9 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         配置
-      
+      </span>
     </span>
   </a>
   
@@ -731,9 +688,9 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         代理
-      
+      </span>
     </span>
   </a>
   
@@ -743,9 +700,9 @@
           <li class="md-nav__item">
   <a href="#mio" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         使用 mio 的事件循环
-      
+      </span>
     </span>
   </a>
   
@@ -754,9 +711,120 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         协议
-      
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http2-mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HTTP/2 与 Mux 层
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP&#x2f;2 与 Mux 层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        协议组合
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Mux 会话结构
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        流生命周期
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streamparts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        StreamParts：方向感知的借用
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        H2 连接状态机
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        H2 流控
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        H2 帧处理流水线
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        模块布局
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        关键设计决策
+      </span>
     </span>
   </a>
   
@@ -766,35 +834,40 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         日志记录
-      
+      </span>
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         指标
-      
+      </span>
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         负载均衡
-      
+      </span>
     </span>
   </a>
   
@@ -803,20 +876,20 @@
         <li class="md-nav__item">
   <a href="#tls" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         TLS
-      
+      </span>
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         深入探讨
-      
+      </span>
     </span>
   </a>
   
@@ -824,22 +897,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         缓冲区
-      
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         通道
-      
+      </span>
     </span>
   </a>
   
@@ -873,8 +946,7 @@
   <span class="md-ellipsis">
     
   
-    工具和库
-  
+  工具和库
 
     
   </span>
@@ -936,8 +1008,7 @@
   <span class="md-ellipsis">
     
   
-    深入
-  
+  深入
 
     
   </span>
@@ -952,8 +1023,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    深入
-  
+  深入
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -972,8 +1042,7 @@
   <span class="md-ellipsis">
     
   
-    会话的生命周期
-  
+  会话的生命周期
 
     
   </span>
@@ -1000,8 +1069,7 @@
   <span class="md-ellipsis">
     
   
-    调试策略
-  
+  调试策略
 
     
   </span>
@@ -1028,8 +1096,7 @@
   <span class="md-ellipsis">
     
   
-    基准测试
-  
+  基准测试
 
     
   </span>
@@ -1056,8 +1123,7 @@
   <span class="md-ellipsis">
     
   
-    词汇表
-  
+  词汇表
 
     
   </span>
@@ -1087,6 +1153,19 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
@@ -1107,9 +1186,9 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         主/工作进程模型
-      
+      </span>
     </span>
   </a>
   
@@ -1119,9 +1198,9 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         单线程，无共享架构
-      
+      </span>
     </span>
   </a>
   
@@ -1130,9 +1209,9 @@
           <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         配置
-      
+      </span>
     </span>
   </a>
   
@@ -1146,9 +1225,9 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         代理
-      
+      </span>
     </span>
   </a>
   
@@ -1158,9 +1237,9 @@
           <li class="md-nav__item">
   <a href="#mio" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         使用 mio 的事件循环
-      
+      </span>
     </span>
   </a>
   
@@ -1169,9 +1248,120 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         协议
-      
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#http2-mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        HTTP/2 与 Mux 层
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HTTP&#x2f;2 与 Mux 层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        协议组合
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mux" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Mux 会话结构
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        流生命周期
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#streamparts" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        StreamParts：方向感知的借用
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        H2 连接状态机
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        H2 流控
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        H2 帧处理流水线
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        模块布局
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        关键设计决策
+      </span>
     </span>
   </a>
   
@@ -1181,35 +1371,40 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         日志记录
-      
+      </span>
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         指标
-      
+      </span>
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         负载均衡
-      
+      </span>
     </span>
   </a>
   
@@ -1218,20 +1413,20 @@
         <li class="md-nav__item">
   <a href="#tls" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         TLS
-      
+      </span>
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         深入探讨
-      
+      </span>
     </span>
   </a>
   
@@ -1239,22 +1434,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         缓冲区
-      
+      </span>
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         通道
-      
+      </span>
     </span>
   </a>
   
@@ -1290,8 +1485,9 @@
   
   
     <li class="md-path__item">
-      <a href=".." class="md-path__link">
+      <a href="./.." class="md-path__link">
         
+  
   <span class="md-ellipsis">
     首页
   </span>
@@ -1307,9 +1503,19 @@
   
     
     
+      
+        
+      
+        
+      
+    
+    
+    
+    
       <li class="md-path__item">
-        <a href="./" class="md-path__link">
+        <a href="././" class="md-path__link">
           
+  
   <span class="md-ellipsis">
     概述
   </span>
@@ -1327,6 +1533,9 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+  
+
 
 <h1 id="_1">架构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>这部分主要面向希望了解 sōzu 工作原理的人。</p>
@@ -1346,7 +1555,7 @@
 <p>Mio 提供了一个跨平台抽象，允许调用者接收事件，例如套接字变为可读（意味着它收到了一些数据）。</p>
 <p>Sōzu 要求 mio 以<a href="http://man7.org/linux/man-pages/man7/epoll.7.html">边缘触发模式</a>发送套接字的所有事件。
 这样，它只接收一次事件，并将其存储在一个
-<a href="https://github.com/sozu-proxy/sozu/blob/01a78be7d95ac295d30b342d3ec0be403c98e776/lib/src/lib.rs#L527"><code>Readiness</code> 结构体</a>中。
+<a href="https://github.com/sozu-proxy/sozu/blob/main/lib/src/lib.rs"><code>Readiness</code> 结构体</a>中。
 然后它将使用该信息和“兴趣”（指示当前协议状态机是否想在套接字上读取或写入）。</p>
 <p>每个套接字事件都带有一个 <code>Token</code> 返回，指示其在 <code>Slab</code> 数据结构中的索引。一个客户端会话可以有多个套接字（通常是一个前端套接字和一个后端套接字）。</p>
 <h3 id="_6">协议<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -1356,25 +1565,284 @@
 <li>握手完成后，升级到最近协商的 TLS 流上的 HTTP 协议</li>
 <li>升级到 websockets</li>
 </ul>
-<p>每个协议都将与 <code>Readiness</code> 结构一起工作，以指示它是否想在每个套接字上读取或写入。例如，<a href="https://github.com/sozu-proxy/sozu/blob/3111e2db420d2773b1f0404d6556f40b2f2ea85b/lib/src/network/protocol/openssl.rs">基于 OpenSSL 的握手</a> 只对前端套接字感兴趣。</p>
-<p>它们都在 <a href="https://github.com/sozu-proxy/sozu/tree/3111e2db420d2773b1f0404d6556f40b2f2ea85b/lib/src/network/protocol"><code>lib/src/network/protocol</code></a> 中定义。</p>
-<h2 id="_7">日志记录<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/sozu-proxy/sozu/blob/3111e2db420d2773b1f0404d6556f40b2f2ea85b/lib/src/logging.rs">记录器</a> 旨在使用 Rust 的格式化系统减少分配和字符串插值。它可以在各种后端上发送日志：stdout、文件、TCP、UDP、Unix 套接字。</p>
+<p>每个协议都将与 <code>Readiness</code> 结构一起工作，以指示它是否想在每个套接字上读取或写入。例如，<a href="https://github.com/sozu-proxy/sozu/blob/main/lib/src/protocol/rustls.rs">基于 rustls 的握手</a> 只对前端套接字感兴趣。</p>
+<p>第四个代理实现 <strong>UDP</strong>，对数据报流量（DNS、syslog、NTP、通用 UDP）进行负载均衡。它是无连接的，因此刻意位于上述按会话 <code>accept()</code>/状态机模型之外：单个监听器套接字服务于多个虚拟四元组<em>流</em>，每个流都有自己已连接的上游套接字用于对称的 NAT 回程。流的完整生命周期、用户态 conntrack 流表、拆除以及加固规则，在 <a href="https://github.com/sozu-proxy/sozu/tree/main/lib/src/protocol/udp/LIFECYCLE.md"><code>lib/src/protocol/udp/LIFECYCLE.md</code></a> 中端到端地逐步讲解（含 <code>file.rs:LINE</code> 引用）。另请参阅 <a href="https://github.com/sozu-proxy/sozu/tree/main/lib/src/protocol/udp"><code>lib/src/protocol/udp</code></a> 以及 <a href="../configure/"><code>doc/configure.md</code></a> 的 UDP 章节。</p>
+<p>它们都在 <a href="https://github.com/sozu-proxy/sozu/tree/main/lib/src/protocol"><code>lib/src/protocol</code></a> 中定义。</p>
+<h3 id="http2-mux">HTTP/2 与 Mux 层<a class="headerlink" href="#http2-mux" title="Permanent link">&para;</a></h3>
+<p>HTTP/2 支持通过 <code>lib/src/protocol/mux/</code> 中统一的复用器（<code>Mux</code>）实现。
+Mux 层通过带有 <code>H1</code> 和 <code>H2</code> 变体的 <code>Connection</code> 枚举来处理 HTTP/1.1 和 HTTP/2 连接，
+从而支持前端和后端协议的任意组合。</p>
+<h4 id="_7">协议组合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>  Client             Sōzu               Backend
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  ──────           ────────            ─────────
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   H1  ──────────▶  Mux  ──────────▶   H1        (classic)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>   H1  ──────────▶  Mux  ──────────▶   H2        (H2 backend, h2c)
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>   H2  ──────────▶  Mux  ──────────▶   H1        (H2 frontend, H1 backend)
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>   H2  ──────────▶  Mux  ──────────▶   H2        (end-to-end H2)
+</span></code></pre></div>
+<p>前端协议由 TLS 握手期间的 ALPN 协商决定（明文则使用 H2 prior knowledge）。
+后端协议由 <code>cluster.http2</code> protobuf 配置标志控制。</p>
+<h4 id="mux">Mux 会话结构<a class="headerlink" href="#mux" title="Permanent link">&para;</a></h4>
+<p>一个 <code>MuxState</code> 会话拥有一个前端 <code>Connection</code> 以及一个包含零个或多个后端 <code>Connection</code> 的 <code>Router</code>。
+所有连接共享一个持有 <code>Vec&lt;Stream&gt;</code> 的 <code>Context</code>。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>MuxState
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── frontend: Connection&lt;FrontRustls&gt;     ◄── one frontend socket
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── H1(ConnectionH1)                      (either H1 or H2)
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>│   └── H2(ConnectionH2)
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>├── router: Router
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>│   └── backends: HashMap&lt;Token, Connection&lt;TcpStream&gt;&gt;
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│       ├── Token(7)  → H1(ConnectionH1)  ◄── backend to cluster &quot;app-1&quot;
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│       ├── Token(12) → H2(ConnectionH2)  ◄── backend to cluster &quot;app-2&quot; (h2c)
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│       └── ...
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>└── context: Context
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    ├── streams: Vec&lt;Stream&gt;              ◄── shared stream pool
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    │   ├── [0] Stream { state: Linked(Token(7)),  front: Kawa, back: Kawa, ... }
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    │   ├── [1] Stream { state: Linked(Token(12)), front: Kawa, back: Kawa, ... }
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    │   ├── [2] Stream { state: Recycle, ... }
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    │   └── ...
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    ├── pool: Weak&lt;RefCell&lt;Pool&gt;&gt;         ◄── buffer allocator
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    └── listener: Rc&lt;RefCell&lt;L&gt;&gt;
+</span></code></pre></div>
+<h4 id="_8">流生命周期<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>每个 <code>Stream</code> 在处理请求/响应对时经历不同的状态：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>             ┌──────────────────────────────────────────────────┐
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>             │                                                  │
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>             ▼                                                  │
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>          ┌──────┐   HEADERS    ┌──────┐   connect()   ┌────────┐
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  new ──▶ │ Idle │ ──────────▶ │ Link │ ────────────▶ │ Linked  │
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>          └──────┘   received   └──────┘   to backend  │(Token)  │
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>             ▲                                          └────┬───┘
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>             │                                               │
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>             │       ┌─────────┐   response    ┌─────────┐   │ backend
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>             │       │ Recycle │ ◀──────────── │end_stream│ ◀─┘ done or
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>             │       └────┬────┘   complete     └─────────┘    error
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>             │            │                         │
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>             │ reuse      │                         │ can&#39;t retry
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>             └────────────┘                         ▼
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>                                              ┌──────────┐
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>                                              │ Unlinked │ ──▶ error response
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>                                              └──────────┘
+</span></code></pre></div>
+<ul>
+<li><strong>Idle</strong>：流已分配但还没有请求。在 H2 中，处于此状态的流可以从先前的请求回收。</li>
+<li><strong>Link</strong>：请求头已解析完毕，等待 <code>Router</code> 连接到后端。</li>
+<li><strong>Linked(Token)</strong>：已连接到由 <code>Token</code> 标识的后端。数据双向流动。</li>
+<li><strong>Unlinked</strong>：后端已断开且请求无法重试。会生成默认错误响应（502/503/504）。</li>
+<li><strong>Recycle</strong>：响应已完全发送。在 H2 中，流被归还到池中以便复用。
+  在 H1 中，会话关闭或重置以支持 keep-alive。</li>
+</ul>
+<h4 id="streamparts">StreamParts：方向感知的借用<a class="headerlink" href="#streamparts" title="Permanent link">&para;</a></h4>
+<p>一个 <code>Stream</code> 包含两个 Kawa 缓冲区（<code>front</code> 和 <code>back</code>）。<code>split(&amp;position)</code> 方法
+返回一个 <code>StreamParts</code> 结构体，带有与方向对应的别名：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>                        Stream
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>             ┌─────────────────────────┐
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>             │  front: Kawa (Request)  │
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>             │  back:  Kawa (Response) │
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>             │  window: i32            │
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>             │  context: HttpContext    │
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>             └────────┬────────────────┘
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                      │
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>          ┌───────────┴───────────┐
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>          │                       │
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>   Position::Server          Position::Client
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>   (frontend conn)           (backend conn)
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>          │                       │
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>          ▼                       ▼
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>   StreamParts {             StreamParts {
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>     rbuffer: &amp;front,          rbuffer: &amp;back,
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>     wbuffer: &amp;back,           wbuffer: &amp;front,
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>     window, context           window, context
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>   }                         }
+</span></code></pre></div>
+<p>前端（Server 位置）从 <code>front</code> 读取并写入 <code>back</code>。
+后端（Client 位置）从 <code>back</code> 读取并写入 <code>front</code>。
+这种反转是让 H1 和 H2 连接能够共享流的关键抽象。</p>
+<h4 id="h2">H2 连接状态机<a class="headerlink" href="#h2" title="Permanent link">&para;</a></h4>
+<p>每个 <code>ConnectionH2</code> 运行一个帧级别的读取状态机。该结构体被分解为若干逻辑子结构体以便维护：</p>
+<ul>
+<li><code>H2FlowControl</code> —— 连接级窗口、对端窗口、初始窗口大小</li>
+<li><code>H2ByteAccounting</code> —— 开销字节、零窗口计数</li>
+<li><code>H2DrainState</code> —— GoAway 已发送标志、最后一个流 ID、待处理 RST 流</li>
+<li><code>H2FloodConfig</code> —— 6 个可配置的洪水检测阈值（按监听器）</li>
+<li><code>Prioriser</code> —— 每个流的 RFC 9218 紧急度 + 增量跟踪</li>
+</ul>
+<p>详细内部机制请参阅 <a href=".././h2_mux_internals/">h2_mux_internals.md</a>。</p>
+<p>H2 状态机：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>              ┌───────────────┐
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>              │ ClientPreface │   (server waits for &quot;PRI * HTTP/2.0...&quot; + SETTINGS)
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>              └───────┬───────┘
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>                      │ preface valid
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>                      ▼
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>              ┌───────────────┐
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>              │ServerSettings │   (server sends own SETTINGS + ACK)
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>              └───────┬───────┘
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                      │ settings exchanged
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>                      ▼
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>     ┌──────────────────────────────────┐
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>     │            Header                │ ◄──────────────────────────┐
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>     │  (read 9-byte frame header)      │                            │
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>     └───────────────┬──────────────────┘                            │
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>                     │ parsed FrameHeader                            │
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>                     ▼                                               │
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>     ┌──────────────────────────────────┐                            │
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>     │         Frame(header)            │   expect_header()          │
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>     │  (read payload_len bytes)        │ ──────────────────────────▶│
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>     └───────────────┬──────────────────┘                            │
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>                     │                                               │
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>          ┌──────────┼───────────┐                                   │
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>          │          │           │                                    │
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>          ▼          ▼           ▼                                    │
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>     HEADERS      DATA      SETTINGS/PING/...                        │
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>     (if end_headers=0)         │                                    │
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>          │                     └────────────────────────────────────▶│
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>          ▼                                                          │
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>     ┌──────────────────────┐                                        │
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>     │ ContinuationHeader   │  (read 9-byte continuation header)     │
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>     └──────────┬───────────┘                                        │
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>                │                                                    │
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>                ▼                                                    │
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>     ┌──────────────────────┐                                        │
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>     │ ContinuationFrame    │  (accumulate header block)             │
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>     └──────────┬───────────┘                                        │
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>                │ end_headers=1                                      │
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>                └────────────────────────────────────────────────────▶│
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>                                                                     │
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>     ┌──────────────────────┐                                        │
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>     │       GoAway         │  (drain: send GOAWAY, close)           │
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>     └──────────────────────┘                                        │
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>     ┌──────────────────────┐                                        │
+</span><span id="__span-4-44"><a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>     │       Error          │  (protocol error detected)             │
+</span><span id="__span-4-45"><a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>     └──────────────────────┘
+</span></code></pre></div>
+<p>在写入时，<code>writable()</code> 方法委托给 <code>write_streams()</code>，后者按 RFC 9218 紧急度
+（紧急度越低 = 优先级越高）对所有流排序，然后在相同紧急度内按流 ID 进行 FIFO。
+每个流的 Kawa 块通过 <code>H2BlockConverter</code> 转换为 H2 帧。连接级和流级的流控窗口
+限制了每次迭代可发送的 DATA 字节数。</p>
+<h4 id="h2_1">H2 流控<a class="headerlink" href="#h2_1" title="Permanent link">&para;</a></h4>
+<p>流控在每个 RFC 9113 §6.9 的两个层级上运作：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>    ConnectionH2                          Stream
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  ┌──────────────┐                    ┌──────────────┐
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  │ window: i32  │  ◄── connection    │ window: i32  │  ◄── stream
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  │              │      level         │              │      level
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>  └──────┬───────┘                    └──────┬───────┘
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>         │                                   │
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>         │  effective window = min(connection.window, stream.window)
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>         │
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>         ▼
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  Sending DATA: decrement both windows by bytes sent.
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>  Receiving DATA: track received_bytes_since_update.
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>  When received_bytes_since_update &gt; initial_window_size / 2:
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    → Queue connection-level WINDOW_UPDATE
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    → Queue stream-level WINDOW_UPDATE
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    → Flush during writable() before sending DATA
+</span></code></pre></div>
+<p>WINDOW_UPDATE 帧按流 ID 在 <code>pending_window_updates</code> 中合并，并在 <code>writable()</code> 开始时
+内联冲刷，避免额外的事件循环迭代。</p>
+<h4 id="h2_2">H2 帧处理流水线<a class="headerlink" href="#h2_2" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>  Socket ──read──▶ zero.storage ──parse──▶ FrameHeader ──▶ Frame
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                   (connection                              │
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>                    buffer)                                  │
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>                                                ┌───────────┼───────────┐
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>                                                ▼           ▼           ▼
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>                                             HEADERS      DATA     SETTINGS
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>                                                │           │        PING
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>                                                │           │       GOAWAY
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>                                                ▼           ▼      WINDOW_UPDATE
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>                                          ┌──────────┐ ┌────────┐
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>                                          │  pkawa   │ │ stream │
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>                                          │  HPACK   │ │ .front │
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>                                          │  decode  │ │ .push  │
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>                                          │  + kawa  │ │ _block │
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>                                          │  blocks  │ └────────┘
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>                                          └──────────┘
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
+</span><span id="__span-6-18"><a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>  stream.back ──kawa::prepare()──▶ H2BlockConverter ──▶ HPACK encode
+</span><span id="__span-6-19"><a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>                                                           │
+</span><span id="__span-6-20"><a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>                                   gen_frame_header() ◄────┘
+</span><span id="__span-6-21"><a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>                                          │
+</span><span id="__span-6-22"><a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>                                          ▼
+</span><span id="__span-6-23"><a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a>                                   kawa.out ──write──▶ Socket
+</span></code></pre></div>
+<ul>
+<li><strong>入站</strong>：<code>parser.rs</code>（nom）解码二进制帧。<code>pkawa.rs</code> 将 HPACK 头解码为 Kawa 块。
+  DATA 载荷是对流存储缓冲区的零拷贝切片。</li>
+<li><strong>出站</strong>：<code>converter.rs</code>（<code>H2BlockConverter</code>）将 Kawa 块编码为 H2 帧。
+  HPACK 编码使用 <code>loona-hpack::Encoder</code>。大型头块会自动拆分为
+  HEADERS + CONTINUATION 帧，以遵守 <code>max_frame_size</code>。</li>
+</ul>
+<h4 id="_9">模块布局<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>lib/src/protocol/mux/
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>├── mod.rs          Mux 会话、Stream、Router、ready() 循环、流生命周期 (1818 行)
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>├── h1.rs           HTTP/1.1 连接 (ConnectionH1) (823 行)
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>├── h2.rs           HTTP/2 连接 (ConnectionH2)、状态机、流控、
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│                   flood 检测、RFC 9218 优先级、关闭处理 (7562 行)
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>├── parser.rs       H2 二进制帧解析器 (nom)、线格式常量 (2246 行)
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>├── serializer.rs   H2 帧序列化器 (cookie-factory)、SETTINGS/GOAWAY/RST_STREAM (557 行)
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>├── converter.rs    Kawa → H2 帧转换器 (H2BlockConverter)、HPACK 编码 (1410 行)
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>├── pkawa.rs        H2 → Kawa 转换器、HPACK 解码、伪头验证、
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>│                   RFC 9218 优先级头解析 (2229 行)
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>├── connection.rs   共享的前端/后端连接类型与簿记 (578 行)
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>├── router.rs       后端拨号 / 池 / Router::connect 编排 (678 行)
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>├── stream.rs       每流状态、所有权、双向 EOS 跟踪 (290 行)
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>├── answers.rs      Mux 侧默认 HTTP 应答 (302 行)
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>├── shared.rs       跨连接共享状态 (93 行)
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>└── debug.rs        诊断辅助 (80 行)
+</span></code></pre></div>
+<p>总计：13 个模块共 18 666 行 Rust。运行
+<code>wc -l lib/src/protocol/mux/*.rs</code> 可在任意 HEAD 上重新推导。</p>
+<h4 id="_10">关键设计决策<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>mux 在分支上积极维护的参考是
+<code>lib/src/protocol/mux/LIFECYCLE.md</code>，它以 <code>file.rs:LINE</code> 引用对照当前 HEAD
+逐步讲解每一次状态转换。</p>
+<ul>
+<li><strong>双向端到端流跟踪</strong>：每个 <code>Stream</code> 上独立的 <code>front_received_end_of_stream</code> 和
+  <code>back_received_end_of_stream</code> 字段，防止前端和后端连接相互干扰对方的流状态。</li>
+<li><strong>无共享流池</strong>：流存储在按 <code>GlobalStreamId</code> 索引的 <code>Vec&lt;Stream&gt;</code> 中。每个 <code>ConnectionH2</code>
+  通过 <code>HashMap&lt;StreamId, GlobalStreamId&gt;</code> 将自己的 H2 流 ID 映射到全局 ID。这使得
+  H2 前端和 H2 后端能够引用同一个流而无需共享所有权。</li>
+<li><strong>HPACK 安全性</strong>：解码回调（<code>pkawa.rs</code>）使用可失败的 <code>write_all()</code> 调用，并按
+  RFC 9113 §8.2 校验头（无大写、无连接相关头、伪头顺序）。无效头触发流重置，而非连接错误。</li>
+<li><strong>GoAway 排干</strong>：收到 GoAway 帧时，连接进入 <code>draining</code> 模式。新流被拒绝，但已有流
+  正常完成。高于 <code>peer_last_stream_id</code> 的流有资格在新连接上重试。</li>
+<li><strong>主动驱动的优雅关闭</strong>：在 worker 排干期间，mux 层在常规 epoll 循环之外强制进行
+  H2 可读、可写遍历，以便观察最终的對端 EOF / END_STREAM 事件、冲刷 GOAWAY 和 TLS 记录，
+  并清理由不完整的 HEADERS 块创建的陈旧流映射。</li>
+<li><strong>H2 后端（h2c）</strong>：由 <code>command/src/command.proto</code> 中的 <code>cluster.http2</code> 控制。
+  Sōzu 与后端使用明文 H2 通信。<code>:scheme</code> 伪头派生自前端监听器协议（HTTP 或 HTTPS），
+  而非后端连接。<code>cluster.http2</code> 仅是后端能力提示 —— 它不控制前端 H2。
+  前端 H2 由监听器上的 TLS ALPN 协商驱动（<code>alpn_protocols</code> 包含 <code>"h2"</code>）；
+  一个 <code>http2 = false</code> 的集群仍可在前端为 H2 客户端提供服务，在后端边界进行 H2 → H1 转换。</li>
+<li><strong>RFC 9218 优先级</strong>：<code>Prioriser</code> 结构体从 <code>priority</code> 头跟踪每个流的紧急度（0-7）和
+  增量标志。<code>write_streams()</code> 中的流调度先按紧急度排序（越低 = 优先级越高），再按流 ID 排序。
+  默认紧急度按 RFC 9218 为 3。</li>
+<li><strong>可配置的洪水检测</strong>：六个阈值（RST_STREAM、PING、SETTINGS、空 DATA、CONTINUATION、
+  glitch 计数）可通过 protobuf 按监听器配置，并带有编译期默认值。超出任一阈值都会触发
+  GOAWAY(ENHANCE_YOUR_CALM)。</li>
+<li><strong>按比例分配开销</strong>：连接级开销字节（SETTINGS、PING、WINDOW_UPDATE）按各流传输的字节数
+  成比例地分配给流，而非平均分配。这确保了按流计费的准确性和指标的准确性。</li>
+<li><strong>OpenTelemetry 追踪传播</strong>：在 <code>opentelemetry</code> 特性标志之后，在 H2 流创建期间提取
+  <code>traceparent</code>/<code>tracestate</code> 头，并传播进访问日志条目，用于分布式追踪关联。</li>
+</ul>
+<h2 id="_11">日志记录<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/sozu-proxy/sozu/tree/main/command/src/logging">记录器</a> 旨在使用 Rust 的格式化系统减少分配和字符串插值。它可以在各种后端上发送日志：stdout、文件、TCP、UDP、Unix 套接字。</p>
 <p>记录器可以通过一个线程局部存储变量从任何地方通过日志宏调用。</p>
-<h2 id="_8">指标<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/sozu-proxy/sozu/tree/3111e2db420d2773b1f0404d6556f40b2f2ea85b/lib/src/network/metrics">指标</a> 的工作方式与记录器类似，可以通过宏和 TLS 从任何地方访问。我们支持两种“drains”：一种通过 statsd 兼容协议在网络上发送指标，另一种在本地聚合指标，以通过配置套接字进行查询。</p>
-<h2 id="_9">负载均衡<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h2 id="_12">指标<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/sozu-proxy/sozu/tree/main/lib/src/metrics">指标</a> 的工作方式与记录器类似，可以通过宏和 TLS 从任何地方访问。我们支持两种“drains”：一种通过 statsd 兼容协议在网络上发送指标，另一种在本地聚合指标，以通过配置套接字进行查询。</p>
+<h2 id="_13">负载均衡<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <p>对于给定的集群，Sōzu 维护一个后端列表，连接将被重定向到这些后端。
 Sōzu 检测损坏的服务器，并仅将流量重定向到健康的服务器，有多种可用的负载均衡算法：
 轮询（默认）、随机、最少连接和二次幂。</p>
 <h2 id="tls">TLS<a class="headerlink" href="#tls" title="Permanent link">&para;</a></h2>
 <p>Sōzu 是一个由 rustls 支持的 TLS 端点。
 它使用 TLS 密钥和证书解密流量，并将其未加密地转发到后端。</p>
-<h2 id="_10">深入探讨<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
-<h3 id="_11">缓冲区<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h2 id="_14">深入探讨<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h3 id="_15">缓冲区<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>Sōzu 经过优化，内存使用非常有限。
 所有流量都（短暂地）存储在一个固定大小（通常为 16 kB）的可重用缓冲区池中。</p>
-<h3 id="_12">通道<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h3 id="_16">通道<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>它们是 unix 套接字之上的一个抽象层，使与 sōzu 的通信更容易。</p>
 
 
@@ -1480,11 +1948,10 @@ Sōzu 检测损坏的服务器，并仅将流量重定向到健康的服务器�
     
       
       
-      
-      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.5df7522c.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.21aa498e.min.js"></script>
+      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
       
     
   </body>

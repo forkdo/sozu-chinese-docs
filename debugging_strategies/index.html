@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.11">
+      <meta name="generator" content="zensical-0.0.53">
     
     
       
@@ -36,7 +36,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.bd6182e7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.20815dad.min.css">
       
         
           
@@ -44,35 +44,6 @@
         <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  <style>:root{}</style>
-
 
 
     
@@ -84,12 +55,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -110,7 +81,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
     <div data-md-component="skip">
       
         
@@ -130,13 +101,13 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Sōzu 中文文档" class="md-header__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+    <a href="./.." title="Sōzu 中文文档" class="md-header__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
@@ -190,7 +161,7 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
@@ -206,7 +177,7 @@
         <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     sozu-proxy/sozu
@@ -239,10 +210,10 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Sōzu 中文文档" class="md-nav__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+    <a href="./.." title="Sōzu 中文文档" class="md-nav__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
     Sōzu 中文文档
@@ -252,7 +223,7 @@
       <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     sozu-proxy/sozu
@@ -269,15 +240,14 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="./.." class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    首页
-  
+  首页
 
     
   </span>
@@ -337,8 +307,7 @@
   <span class="md-ellipsis">
     
   
-    介绍
-  
+  介绍
 
     
   </span>
@@ -353,8 +322,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    介绍
-  
+  介绍
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -373,8 +341,7 @@
   <span class="md-ellipsis">
     
   
-    入门
-  
+  入门
 
     
   </span>
@@ -401,8 +368,7 @@
   <span class="md-ellipsis">
     
   
-    配置 Sōzu
-  
+  配置 Sōzu
 
     
   </span>
@@ -429,8 +395,7 @@
   <span class="md-ellipsis">
     
   
-    如何使用
-  
+  如何使用
 
     
   </span>
@@ -457,8 +422,7 @@
   <span class="md-ellipsis">
     
   
-    命令行配置
-  
+  命令行配置
 
     
   </span>
@@ -485,8 +449,7 @@
   <span class="md-ellipsis">
     
   
-    为什么你应该使用 Sōzu
-  
+  为什么你应该使用 Sōzu
 
     
   </span>
@@ -513,8 +476,7 @@
   <span class="md-ellipsis">
     
   
-    设计动机
-  
+  设计动机
 
     
   </span>
@@ -541,8 +503,7 @@
   <span class="md-ellipsis">
     
   
-    技巧
-  
+  技巧
 
     
   </span>
@@ -600,8 +561,7 @@
   <span class="md-ellipsis">
     
   
-    概述
-  
+  概述
 
     
   </span>
@@ -616,8 +576,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    概述
-  
+  概述
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -636,8 +595,7 @@
   <span class="md-ellipsis">
     
   
-    架构概述
-  
+  架构概述
 
     
   </span>
@@ -664,8 +622,7 @@
   <span class="md-ellipsis">
     
   
-    工具和库
-  
+  工具和库
 
     
   </span>
@@ -727,8 +684,7 @@
   <span class="md-ellipsis">
     
   
-    深入
-  
+  深入
 
     
   </span>
@@ -743,8 +699,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    深入
-  
+  深入
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -763,8 +718,7 @@
   <span class="md-ellipsis">
     
   
-    会话的生命周期
-  
+  会话的生命周期
 
     
   </span>
@@ -787,7 +741,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -800,8 +754,7 @@
   <span class="md-ellipsis">
     
   
-    调试策略
-  
+  调试策略
 
     
   </span>
@@ -811,15 +764,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    调试策略
-  
+  调试策略
 
     
   </span>
@@ -847,9 +799,9 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         收集信息
-      
+      </span>
     </span>
   </a>
   
@@ -859,9 +811,9 @@
           <li class="md-nav__item">
   <a href="#sozu_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         通过 sozu 命令行转储状态
-      
+      </span>
     </span>
   </a>
   
@@ -870,9 +822,9 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         日志记录
-      
+      </span>
     </span>
   </a>
   
@@ -881,9 +833,9 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         指标
-      
+      </span>
     </span>
   </a>
   
@@ -897,9 +849,9 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         要关注的图表和指标
-      
+      </span>
     </span>
   </a>
   
@@ -909,9 +861,9 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         跟踪有效流量
-      
+      </span>
     </span>
   </a>
   
@@ -921,9 +873,9 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         访问日志
-      
+      </span>
     </span>
   </a>
   
@@ -932,9 +884,9 @@
           <li class="md-nav__item">
   <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         HTTP 状态指标
-      
+      </span>
     </span>
   </a>
   
@@ -943,9 +895,9 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         传输的数据
-      
+      </span>
     </span>
   </a>
   
@@ -954,9 +906,9 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         响应时间
-      
+      </span>
     </span>
   </a>
   
@@ -965,9 +917,9 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         协议
-      
+      </span>
     </span>
   </a>
   
@@ -981,9 +933,9 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         跟踪失败的请求
-      
+      </span>
     </span>
   </a>
   
@@ -992,9 +944,9 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         可伸缩性
-      
+      </span>
     </span>
   </a>
   
@@ -1003,9 +955,9 @@
           <li class="md-nav__item">
   <a href="#tls" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         TLS 特定信息
-      
+      </span>
     </span>
   </a>
   
@@ -1019,9 +971,9 @@
         <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         典型错误场景
-      
+      </span>
     </span>
   </a>
   
@@ -1031,9 +983,9 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         路由问题
-      
+      </span>
     </span>
   </a>
   
@@ -1042,9 +994,9 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         后端服务器不可用
-      
+      </span>
     </span>
   </a>
   
@@ -1053,9 +1005,9 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         僵尸
-      
+      </span>
     </span>
   </a>
   
@@ -1064,9 +1016,9 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         无效的会话关闭
-      
+      </span>
     </span>
   </a>
   
@@ -1075,9 +1027,9 @@
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         接受队列正在填满
-      
+      </span>
     </span>
   </a>
   
@@ -1091,9 +1043,9 @@
         <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         开发期间
-      
+      </span>
     </span>
   </a>
   
@@ -1103,9 +1055,9 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         跟踪指标
-      
+      </span>
     </span>
   </a>
   
@@ -1139,8 +1091,7 @@
   <span class="md-ellipsis">
     
   
-    基准测试
-  
+  基准测试
 
     
   </span>
@@ -1167,8 +1118,7 @@
   <span class="md-ellipsis">
     
   
-    词汇表
-  
+  词汇表
 
     
   </span>
@@ -1198,6 +1148,19 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
@@ -1218,9 +1181,9 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         收集信息
-      
+      </span>
     </span>
   </a>
   
@@ -1230,9 +1193,9 @@
           <li class="md-nav__item">
   <a href="#sozu_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         通过 sozu 命令行转储状态
-      
+      </span>
     </span>
   </a>
   
@@ -1241,9 +1204,9 @@
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         日志记录
-      
+      </span>
     </span>
   </a>
   
@@ -1252,9 +1215,9 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         指标
-      
+      </span>
     </span>
   </a>
   
@@ -1268,9 +1231,9 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         要关注的图表和指标
-      
+      </span>
     </span>
   </a>
   
@@ -1280,9 +1243,9 @@
           <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         跟踪有效流量
-      
+      </span>
     </span>
   </a>
   
@@ -1292,9 +1255,9 @@
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         访问日志
-      
+      </span>
     </span>
   </a>
   
@@ -1303,9 +1266,9 @@
           <li class="md-nav__item">
   <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         HTTP 状态指标
-      
+      </span>
     </span>
   </a>
   
@@ -1314,9 +1277,9 @@
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         传输的数据
-      
+      </span>
     </span>
   </a>
   
@@ -1325,9 +1288,9 @@
           <li class="md-nav__item">
   <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         响应时间
-      
+      </span>
     </span>
   </a>
   
@@ -1336,9 +1299,9 @@
           <li class="md-nav__item">
   <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         协议
-      
+      </span>
     </span>
   </a>
   
@@ -1352,9 +1315,9 @@
           <li class="md-nav__item">
   <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         跟踪失败的请求
-      
+      </span>
     </span>
   </a>
   
@@ -1363,9 +1326,9 @@
           <li class="md-nav__item">
   <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         可伸缩性
-      
+      </span>
     </span>
   </a>
   
@@ -1374,9 +1337,9 @@
           <li class="md-nav__item">
   <a href="#tls" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         TLS 特定信息
-      
+      </span>
     </span>
   </a>
   
@@ -1390,9 +1353,9 @@
         <li class="md-nav__item">
   <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         典型错误场景
-      
+      </span>
     </span>
   </a>
   
@@ -1402,9 +1365,9 @@
           <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         路由问题
-      
+      </span>
     </span>
   </a>
   
@@ -1413,9 +1376,9 @@
           <li class="md-nav__item">
   <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         后端服务器不可用
-      
+      </span>
     </span>
   </a>
   
@@ -1424,9 +1387,9 @@
           <li class="md-nav__item">
   <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         僵尸
-      
+      </span>
     </span>
   </a>
   
@@ -1435,9 +1398,9 @@
           <li class="md-nav__item">
   <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         无效的会话关闭
-      
+      </span>
     </span>
   </a>
   
@@ -1446,9 +1409,9 @@
           <li class="md-nav__item">
   <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         接受队列正在填满
-      
+      </span>
     </span>
   </a>
   
@@ -1462,9 +1425,9 @@
         <li class="md-nav__item">
   <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         开发期间
-      
+      </span>
     </span>
   </a>
   
@@ -1474,9 +1437,9 @@
           <li class="md-nav__item">
   <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         跟踪指标
-      
+      </span>
     </span>
   </a>
   
@@ -1512,8 +1475,9 @@
   
   
     <li class="md-path__item">
-      <a href=".." class="md-path__link">
+      <a href="./.." class="md-path__link">
         
+  
   <span class="md-ellipsis">
     首页
   </span>
@@ -1529,9 +1493,23 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
       <li class="md-path__item">
         <a href="../lifetime_of_a_session/" class="md-path__link">
           
+  
   <span class="md-ellipsis">
     深入
   </span>
@@ -1549,6 +1527,9 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+  
+
 
 <h1 id="sozu">如何调试 sozu<a class="headerlink" href="#sozu" title="Permanent link">&para;</a></h1>
 <p>Sozu 提供日志和指标，可以检测大多数生产问题。</p>
@@ -1622,6 +1603,10 @@
 <li><code>sozu.http.status.3xx</code>：计算状态为 300 到 399 的请求</li>
 <li><code>sozu.http.status.4xx</code>：计算状态为 400 到 499 的请求</li>
 <li><code>sozu.http.status.5xx</code>：计算状态为 500 到 599 的请求</li>
+<li><code>sozu.http.status.&lt;code&gt;</code>：一份十八个状态码短列表的逐码计数器
+  （<code>200/201/204</code>、<code>301/302/304</code>、<code>400/401/403/404/408/413/429</code>、
+  <code>500/502/503/504/507</code>）；完整列表请参阅 <code>doc/configure.md</code>。列表之外的状态码
+  只计入其所属区间，从而使指标键空间保持有界。</li>
 <li><code>sozu.http.requests</code>：每个请求递增（上述计数器的总和）</li>
 </ul>
 <h4 id="_7">传输的数据<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
@@ -1690,7 +1675,7 @@
 <li><code>sozu.slab.entries</code>: slab 分配器中使用的插槽数。通常，每个侦听器套接字有一个插槽，
 一个用于连接到主进程，一个用于指标套接字，然后每个前端连接一个，
 每个后端连接一个。因此，连接数应始终接近（但低于）slab 计数。</li>
-<li><code>sozu.buffer.number</code>: 缓冲池中使用的缓冲区数。非活动会话和我们发送
+<li><code>sozu.buffer.in_use</code>（由 <code>sozu.buffer.number</code> 重命名）：缓冲池中使用的缓冲区数。非活动会话和我们发送
 默认答案（400、404、413、503 HTTP 错误）的请求不使用缓冲区。活动 HTTP 会话使用一个缓冲区（流水线模式除外），
 WebSocket 会话使用两个缓冲区。因此，缓冲区数应始终低于
 slab 计数，并且低于连接数。</li>
@@ -1874,11 +1859,10 @@ slab 计数，并且低于连接数。</li>
     
       
       
-      
-      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.5df7522c.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.21aa498e.min.js"></script>
+      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
       
     
   </body>

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.11">
+      <meta name="generator" content="zensical-0.0.53">
     
     
       
@@ -36,7 +36,7 @@
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.bd6182e7.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.20815dad.min.css">
       
         
           
@@ -44,35 +44,6 @@
         <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
       
       
-  
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-  
-  <style>:root{}</style>
-
 
 
     
@@ -84,12 +55,12 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -110,7 +81,7 @@
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__drawer" aria-label="导航栏"></label>
     <div data-md-component="skip">
       
         
@@ -130,13 +101,13 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href=".." title="Sōzu 中文文档" class="md-header__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+    <a href="./.." title="Sōzu 中文文档" class="md-header__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
-    <label class="md-header__button md-icon" for="__drawer">
+    <label class="md-header__button md-icon" for="__drawer" aria-label="导航栏">
       
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
     </label>
@@ -190,7 +161,7 @@
     
       
       
-        <label class="md-header__button md-icon" for="__search">
+        <label class="md-header__button md-icon" for="__search" aria-label="查找">
           
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
         </label>
@@ -206,7 +177,7 @@
         <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     sozu-proxy/sozu
@@ -239,10 +210,10 @@
 
 <nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Sōzu 中文文档" class="md-nav__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
+    <a href="./.." title="Sōzu 中文文档" class="md-nav__button md-logo" aria-label="Sōzu 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
 
     </a>
     Sōzu 中文文档
@@ -252,7 +223,7 @@
       <a href="https://github.com/sozu-proxy/sozu" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
   </div>
   <div class="md-source__repository">
     sozu-proxy/sozu
@@ -269,15 +240,14 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="./.." class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    首页
-  
+  首页
 
     
   </span>
@@ -337,8 +307,7 @@
   <span class="md-ellipsis">
     
   
-    介绍
-  
+  介绍
 
     
   </span>
@@ -353,8 +322,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    介绍
-  
+  介绍
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -373,8 +341,7 @@
   <span class="md-ellipsis">
     
   
-    入门
-  
+  入门
 
     
   </span>
@@ -401,8 +368,7 @@
   <span class="md-ellipsis">
     
   
-    配置 Sōzu
-  
+  配置 Sōzu
 
     
   </span>
@@ -429,8 +395,7 @@
   <span class="md-ellipsis">
     
   
-    如何使用
-  
+  如何使用
 
     
   </span>
@@ -453,7 +418,7 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
       
       
         
@@ -466,8 +431,7 @@
   <span class="md-ellipsis">
     
   
-    命令行配置
-  
+  命令行配置
 
     
   </span>
@@ -477,15 +441,14 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
   <span class="md-ellipsis">
     
   
-    命令行配置
-  
+  命令行配置
 
     
   </span>
@@ -513,9 +476,9 @@
         <li class="md-nav__item">
   <a href="#http-https" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         添加具有 http 和 https 前端的集群
-      
+      </span>
     </span>
   </a>
   
@@ -525,9 +488,9 @@
           <li class="md-nav__item">
   <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         添加 http 前端
-      
+      </span>
     </span>
   </a>
   
@@ -536,9 +499,9 @@
           <li class="md-nav__item">
   <a href="#https" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         添加 https 前端
-      
+      </span>
     </span>
   </a>
   
@@ -550,11 +513,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        为后端连接启用或禁用 HTTP/2
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sozu_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         检查 sozu 的状态
-      
+      </span>
     </span>
   </a>
   
@@ -563,9 +537,9 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         获取指标和统计信息
-      
+      </span>
     </span>
   </a>
   
@@ -574,9 +548,9 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         转储和恢复状态
-      
+      </span>
     </span>
   </a>
   
@@ -586,9 +560,9 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         使用事件监控后端状态
-      
+      </span>
     </span>
   </a>
   
@@ -596,6 +570,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuisozu-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        实时运维 TUI（<code>sozu top</code>）
+      </span>
+    </span>
+  </a>
   
 </li>
       
@@ -622,8 +607,7 @@
   <span class="md-ellipsis">
     
   
-    为什么你应该使用 Sōzu
-  
+  为什么你应该使用 Sōzu
 
     
   </span>
@@ -650,8 +634,7 @@
   <span class="md-ellipsis">
     
   
-    设计动机
-  
+  设计动机
 
     
   </span>
@@ -678,8 +661,7 @@
   <span class="md-ellipsis">
     
   
-    技巧
-  
+  技巧
 
     
   </span>
@@ -737,8 +719,7 @@
   <span class="md-ellipsis">
     
   
-    概述
-  
+  概述
 
     
   </span>
@@ -753,8 +734,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    概述
-  
+  概述
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -773,8 +753,7 @@
   <span class="md-ellipsis">
     
   
-    架构概述
-  
+  架构概述
 
     
   </span>
@@ -801,8 +780,7 @@
   <span class="md-ellipsis">
     
   
-    工具和库
-  
+  工具和库
 
     
   </span>
@@ -864,8 +842,7 @@
   <span class="md-ellipsis">
     
   
-    深入
-  
+  深入
 
     
   </span>
@@ -880,8 +857,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    深入
-  
+  深入
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
@@ -900,8 +876,7 @@
   <span class="md-ellipsis">
     
   
-    会话的生命周期
-  
+  会话的生命周期
 
     
   </span>
@@ -928,8 +903,7 @@
   <span class="md-ellipsis">
     
   
-    调试策略
-  
+  调试策略
 
     
   </span>
@@ -956,8 +930,7 @@
   <span class="md-ellipsis">
     
   
-    基准测试
-  
+  基准测试
 
     
   </span>
@@ -984,8 +957,7 @@
   <span class="md-ellipsis">
     
   
-    词汇表
-  
+  词汇表
 
     
   </span>
@@ -1015,6 +987,19 @@
               
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
                   <div class="md-sidebar__inner">
                     
 
@@ -1035,9 +1020,9 @@
         <li class="md-nav__item">
   <a href="#http-https" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         添加具有 http 和 https 前端的集群
-      
+      </span>
     </span>
   </a>
   
@@ -1047,9 +1032,9 @@
           <li class="md-nav__item">
   <a href="#http" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         添加 http 前端
-      
+      </span>
     </span>
   </a>
   
@@ -1058,9 +1043,9 @@
           <li class="md-nav__item">
   <a href="#https" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         添加 https 前端
-      
+      </span>
     </span>
   </a>
   
@@ -1072,11 +1057,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#http2" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        为后端连接启用或禁用 HTTP/2
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sozu_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         检查 sozu 的状态
-      
+      </span>
     </span>
   </a>
   
@@ -1085,9 +1081,9 @@
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         获取指标和统计信息
-      
+      </span>
     </span>
   </a>
   
@@ -1096,9 +1092,9 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         转储和恢复状态
-      
+      </span>
     </span>
   </a>
   
@@ -1108,9 +1104,9 @@
           <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      
+      <span class="md-typeset">
         使用事件监控后端状态
-      
+      </span>
     </span>
   </a>
   
@@ -1118,6 +1114,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tuisozu-top" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        实时运维 TUI（<code>sozu top</code>）
+      </span>
+    </span>
+  </a>
   
 </li>
       
@@ -1146,8 +1153,9 @@
   
   
     <li class="md-path__item">
-      <a href=".." class="md-path__link">
+      <a href="./.." class="md-path__link">
         
+  
   <span class="md-ellipsis">
     首页
   </span>
@@ -1163,9 +1171,29 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
       <li class="md-path__item">
         <a href="../getting_started/" class="md-path__link">
           
+  
   <span class="md-ellipsis">
     介绍
   </span>
@@ -1183,6 +1211,9 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
+  
+
 
 <h1 id="sozu">通过命令行配置 sozu<a class="headerlink" href="#sozu" title="Permanent link">&para;</a></h1>
 <p>sozu 可执行文件可用于启动代理并对其进行配置：添加新的后端服务器、读取指标等。
@@ -1194,50 +1225,117 @@
 <p>首先，您需要创建一个具有 id 和负载平衡策略（roundrobin 或 random）的新集群：</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>--id<span class="w"> </span>&lt;my_cluster_id&gt;<span class="w"> </span>--load-balancing-policy<span class="w"> </span>roundrobin
 </span></code></pre></div>
+<p>要创建启用 HTTP/2 后端连接的集群：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>cluster<span class="w"> </span>add<span class="w"> </span>--id<span class="w"> </span>&lt;my_cluster_id&gt;<span class="w"> </span>--load-balancing-policy<span class="w"> </span>roundrobin<span class="w"> </span>--http2
+</span></code></pre></div>
 <p>它不会显示任何内容，但您可以通过查询 sozu 来验证集群是否已成功添加：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>query<span class="w"> </span>clusters
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>query<span class="w"> </span>clusters
 </span></code></pre></div>
 <p>然后你需要添加一个后端：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>backend<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">127</span>.0.0.1:3000<span class="w"> </span>--backend-id<span class="w"> </span>&lt;my_backend_id&gt;<span class="w"> </span>--id<span class="w"> </span>&lt;my_cluster_id&gt;
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>backend<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">127</span>.0.0.1:3000<span class="w"> </span>--backend-id<span class="w"> </span>&lt;my_backend_id&gt;<span class="w"> </span>--id<span class="w"> </span>&lt;my_cluster_id&gt;
 </span></code></pre></div>
 <h3 id="http">添加 http 前端<a class="headerlink" href="#http" title="Permanent link">&para;</a></h3>
 <p>和一个 http 监听器：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>listener<span class="w"> </span>http<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:80<span class="w"> </span>--tls-versions<span class="w"> </span>TLSv1.2<span class="w"> </span>--tls-cipher-list<span class="w"> </span>ECDHE-ECDSA-AES256-GCM-SHA384<span class="w"> </span>--tls-cipher-suites<span class="w"> </span>TLS_AES_256_GCM_SHA384<span class="w"> </span>--tls-signature-algorithms<span class="w"> </span>ECDSA+SHA512<span class="w"> </span>--tls-groups-list<span class="w"> </span>x25519<span class="w"> </span>--expect-proxy
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>listener<span class="w"> </span>http<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:80<span class="w"> </span>--tls-versions<span class="w"> </span>TLSv1.2<span class="w"> </span>--tls-cipher-list<span class="w"> </span>ECDHE-ECDSA-AES256-GCM-SHA384<span class="w"> </span>--tls-cipher-suites<span class="w"> </span>TLS_AES_256_GCM_SHA384<span class="w"> </span>--tls-signature-algorithms<span class="w"> </span>ECDSA+SHA512<span class="w"> </span>--tls-groups-list<span class="w"> </span>x25519<span class="w"> </span>--expect-proxy
 </span></code></pre></div>
 <p>最后，您必须创建一个前端以允许 sozu 将流量从侦听器发送到您的后端：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>frontend<span class="w"> </span>http<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:80<span class="w"> </span>--hostname<span class="w"> </span>&lt;my_cluster_hostname&gt;<span class="w"> </span>id<span class="w"> </span>&lt;my_cluster_id&gt;
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>frontend<span class="w"> </span>http<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:80<span class="w"> </span>--hostname<span class="w"> </span>&lt;my_cluster_hostname&gt;<span class="w"> </span>id<span class="w"> </span>&lt;my_cluster_id&gt;
+</span></code></pre></div>
+<p>要将某个主机名下仅子路径的流量路由到该集群，请添加 <code>--path-prefix</code>
+（其他匹配模式请使用 <code>--path-regex</code> 或 <code>--path-equals</code> —— 详见
+<code>doc/configure.md</code> 中的 “前端内的路径匹配优先级”）：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>frontend<span class="w"> </span>http<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:80<span class="w"> </span>--hostname<span class="w"> </span>&lt;my_cluster_hostname&gt;<span class="w"> </span>--path-prefix<span class="w"> </span>/api<span class="w"> </span>id<span class="w"> </span>&lt;my_cluster_id&gt;
 </span></code></pre></div>
 <h3 id="https">添加 https 前端<a class="headerlink" href="#https" title="Permanent link">&para;</a></h3>
 <p>和一个 https 监听器：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>listener<span class="w"> </span>https<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:443
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>listener<span class="w"> </span>https<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:443
 </span></code></pre></div>
 <p>最后，您必须创建一个前端以允许 sozu 将流量从侦听器发送到您的后端：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>frontend<span class="w"> </span>https<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:443<span class="w"> </span>--hostname<span class="w"> </span>&lt;my_cluster_hostname&gt;<span class="w"> </span>id<span class="w"> </span>&lt;my_cluster_id&gt;
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>frontend<span class="w"> </span>https<span class="w"> </span>add<span class="w"> </span>--address<span class="w"> </span><span class="m">0</span>.0.0.0:443<span class="w"> </span>--hostname<span class="w"> </span>&lt;my_cluster_hostname&gt;<span class="w"> </span>id<span class="w"> </span>&lt;my_cluster_id&gt;
 </span></code></pre></div>
+<h2 id="http2">为后端连接启用或禁用 HTTP/2<a class="headerlink" href="#http2" title="Permanent link">&para;</a></h2>
+<p>您可以在运行时对现有集群切换后端连接的 HTTP/2：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>cluster<span class="w"> </span>h2<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--id<span class="w"> </span>&lt;my_cluster_id&gt;
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>cluster<span class="w"> </span>h2<span class="w"> </span>disable<span class="w"> </span>--id<span class="w"> </span>&lt;my_cluster_id&gt;
+</span></code></pre></div>
+<p>这会查询当前集群配置，更新 <code>http2</code> 标志，并重新应用到所有 worker，而不影响其他集群设置。</p>
 <h2 id="sozu_1">检查 sozu 的状态<a class="headerlink" href="#sozu_1" title="Permanent link">&para;</a></h2>
 <p>它显示了一个工作进程列表并显示有关其状态的信息。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>status
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>status
 </span></code></pre></div>
 <h2 id="_1">获取指标和统计信息<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>它将显示有关 sozu、工作进程和集群指标的全局统计信息。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>query<span class="w"> </span>metrics
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>query<span class="w"> </span>metrics
 </span></code></pre></div>
 <h2 id="_2">转储和恢复状态<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>如果 sozu 配置（集群、前端和后端）未写入配置文件，您可以保存 sozu 状态以便稍后恢复。</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>state<span class="w"> </span>save<span class="w"> </span>--file<span class="w"> </span>state.json
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>state<span class="w"> </span>save<span class="w"> </span>--file<span class="w"> </span>state.json
 </span></code></pre></div>
 <p>然后正常关闭 sozu：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>shutdown
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>shutdown
 </span></code></pre></div>
 <p>重新启动 sozu 并恢复其状态：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>state<span class="w"> </span>load<span class="w"> </span>--file<span class="w"> </span>state.json
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/etc/sozu/config.toml<span class="w"> </span>state<span class="w"> </span>load<span class="w"> </span>--file<span class="w"> </span>state.json
 </span></code></pre></div>
 <p>您应该能够像关闭前一样请求您的集群。</p>
 <h3 id="_3">使用事件监控后端状态<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>此 CLI 命令：</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/path/to/config.toml<span class="w"> </span>events
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/path/to/config.toml<span class="w"> </span>events
 </span></code></pre></div>
 <p>侦听 Sōzu 工作进程在后端关闭、再次启动或没有可用后端时发送的事件。</p>
+<h2 id="tuisozu-top">实时运维 TUI（<code>sozu top</code>）<a class="headerlink" href="#tuisozu-top" title="Permanent link">&para;</a></h2>
+<p><code>top</code> 子命令是一个类似 btop/htop 的实时仪表盘。需使用可选的 <code>tui</code> Cargo 特性进行构建
+（<code>cargo build -p sozu --features tui --release</code>）；当该子命令被链接进来时，
+<code>sozu --version</code> 会显示 <code>+tui</code>。完整的运维指南（面板、按键绑定、皮肤格式、阈值调优）
+请参阅 <a href="../sozu-top/"><code>doc/sozu-top.md</code></a>。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>sozu<span class="w"> </span>--config<span class="w"> </span>/path/to/config.toml<span class="w"> </span>top
+</span></code></pre></div>
+<p>常用参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--refresh-ms &lt;N&gt;</code></td>
+<td>数据轮询间隔（毫秒，默认 <code>1000</code>）。</td>
+</tr>
+<tr>
+<td><code>--detail &lt;DETAIL&gt;</code></td>
+<td>基数租约级别（<code>process|frontend|cluster|backend</code>，默认 <code>backend</code>）。</td>
+</tr>
+<tr>
+<td><code>--lease-ttl-seconds &lt;N&gt;</code></td>
+<td>租约 TTL；在 TTL 过半时自动续期（默认 <code>60</code>，服务端上限 <code>300</code>）。</td>
+</tr>
+<tr>
+<td><code>--skin &lt;NAME&gt;</code></td>
+<td>解析 <code>$XDG_CONFIG_HOME/sozu/skins/&lt;NAME&gt;.toml</code>（<code>SOZU_TOP_SKIN</code> 环境变量优先）。</td>
+</tr>
+<tr>
+<td><code>--glyphs &lt;MODE&gt;</code></td>
+<td>强制某种字形模式（<code>braille|block|tty</code>）；默认自动检测。</td>
+</tr>
+<tr>
+<td><code>--no-mouse</code></td>
+<td>禁用 SGR 鼠标捕获（有助于修复在复用器中鼠标事件被错误路由的问题）。</td>
+</tr>
+<tr>
+<td><code>--snapshot &lt;N&gt;</code>、<code>--tick-once</code></td>
+<td>渲染 N 帧 / 单次 tick 后退出（测试用途）。</td>
+</tr>
+</tbody>
+</table>
+<p>按键绑定（运维速查；完整列表见 <code>doc/sozu-top.md</code>）：</p>
+<ul>
+<li><code>1</code>-<code>7</code> 跳转到 OVERVIEW · CLUSTERS · BACKENDS · LISTENERS · CERTS · H2 · EVENTS。</li>
+<li><code>Tab</code> / <code>Shift-Tab</code> 前后切换标签页。</li>
+<li><code>s</code> / <code>S</code> 在 CLUSTERS 和 BACKENDS 上循环 / 反向循环排序列。</li>
+<li><code>q</code> / <code>Q</code> / <code>Ctrl-C</code> / <code>F10</code> 退出，<code>?</code> / <code>F1</code> 切换帮助。</li>
+</ul>
 
 
 
@@ -1342,11 +1440,10 @@
     
       
       
-      
-      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.5df7522c.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.expand","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"已复制","clipboard.copy":"复制","search.result.more.one":"在该页上还有 1 个符合条件的结果","search.result.more.other":"在该页上还有 # 个符合条件的结果","search.result.none":"没有找到符合条件的结果","search.result.one":"找到 1 个符合条件的结果","search.result.other":"# 个符合条件的结果","search.result.placeholder":"键入以开始搜索","search.result.term.missing":"缺少","select.version":"选择当前版本"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.21aa498e.min.js"></script>
+      <script src="../assets/javascripts/bundle.69c251d7.min.js"></script>
       
     
   </body>
