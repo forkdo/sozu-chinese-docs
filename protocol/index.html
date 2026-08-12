@@ -1197,10 +1197,6 @@
 <h3 id="rust">Rust<a class="headerlink" href="#rust" title="Permanent link">&para;</a></h3>
 <p>可以直接在 <code>sozu-command-lib</code>（二进制程序使用的同一个 crate）之上构建类型化的 Rust 客户端。对于外部项目，模式为：依赖 <code>sozu-command-lib</code>，在 <code>UnixStream</code> 上构建 <code>Channel&lt;Request, Response&gt;</code>，调用 <code>write_message</code> / <code>read_message</code>。该 crate 已暴露 <code>Channel::generate(buffer_size, max_buffer_size)</code> 以及 prost 生成的 <code>Request</code> / <code>Response</code> 类型。</p>
 <h2 id="_11">加固 / 可观测性<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
-<p>推理工作量：绝对最大，不允许任何捷径。
-你必须非常深入地思考，全面分解问题以解决根本原因，严格测试你的逻辑，覆盖所有可能的路径、边界情况和对抗性场景。
-明确写出你的整个思考过程，记录每个中间步骤、考虑的备选方案和拒绝的假设，以确保没有任何假设被遗漏检查。
-```</p>
 <ul>
 <li><strong>分配压力</strong>：<code>max_command_buffer_size</code>（默认 2 MiB）限制每个通道的缓冲区大小。</li>
 <li><strong>UID 白名单</strong>：<code>command_allowed_uids: Vec&lt;u32&gt;</code> 在套接字边界拒绝不在白名单中的 UID。</li>
