@@ -17,6 +17,12 @@ First you need to create a new cluster with an id and a load balancing policy (r
 sozu --config /etc/sozu/config.toml cluster add --id <my_cluster_id> --load-balancing-policy roundrobin
 ```
 
+To create a cluster with HTTP/2 backend connections enabled:
+
+```bash
+sozu --config /etc/sozu/config.toml cluster add --id <my_cluster_id> --load-balancing-policy roundrobin --http2
+```
+
 It won't show anything but you can verify that the cluster has been added successfully by querying sozu:
 
 ```bash
@@ -43,6 +49,14 @@ Finally you have to create a frontend to allow sozu to send traffic from the lis
 sozu --config /etc/sozu/config.toml frontend http add --address 0.0.0.0:80 --hostname <my_cluster_hostname> id <my_cluster_id>
 ```
 
+To route only a sub-path of a hostname to this cluster, add `--path-prefix`
+(use `--path-regex` or `--path-equals` for the other matching modes — see
+"Path matching precedence within a frontend" in `doc/configure.md`):
+
+```bash
+sozu --config /etc/sozu/config.toml frontend http add --address 0.0.0.0:80 --hostname <my_cluster_hostname> --path-prefix /api id <my_cluster_id>
+```
+
 ### Add https frontend
 
 And an https listener:
@@ -56,6 +70,18 @@ Finally you have to create a frontend to allow sozu to send traffic from the lis
 ```bash
 sozu --config /etc/sozu/config.toml frontend https add --address 0.0.0.0:443 --hostname <my_cluster_hostname> id <my_cluster_id>
 ```
+
+## Enable or disable HTTP/2 for backend connections
+
+You can toggle HTTP/2 for backend connections on an existing cluster at runtime:
+
+```bash
+sozu --config /etc/sozu/config.toml cluster h2 enable --id <my_cluster_id>
+sozu --config /etc/sozu/config.toml cluster h2 disable --id <my_cluster_id>
+```
+
+This queries the current cluster configuration, updates the `http2` flag, and re-applies it
+to all workers without affecting other cluster settings.
 
 ## Check the status of sozu
 
@@ -105,3 +131,35 @@ sozu --config /path/to/config.toml events
 
 listens to events sent by Sōzu workers whenever a backend is down, up again,
 or when no backend is available.
+
+## Live operator TUI (`sozu top`)
+
+The `top` subcommand is a btop/htop-style live dashboard. Build with the
+optional `tui` Cargo feature (`cargo build -p sozu --features tui --release`);
+`sozu --version` reports `+tui` when the subcommand is linked in. See
+[`doc/sozu-top.md`](sozu-top.md) for the full operator guide (panes, key
+bindings, skin format, threshold tuning).
+
+```bash
+sozu --config /path/to/config.toml top
+```
+
+Common flags:
+
+| Flag | Effect |
+|------|--------|
+| `--refresh-ms <N>` | Data poll cadence in milliseconds (default `1000`). |
+| `--detail <DETAIL>` | Cardinality lease level (`process|frontend|cluster|backend`, default `backend`). |
+| `--lease-ttl-seconds <N>` | Lease TTL; auto-renewed at half-TTL (default `60`, server clamps at `300`). |
+| `--skin <NAME>` | Resolve `$XDG_CONFIG_HOME/sozu/skins/<NAME>.toml` (`SOZU_TOP_SKIN` env wins). |
+| `--glyphs <MODE>` | Force a glyph mode (`braille|block|tty`); auto-detect by default. |
+| `--no-mouse` | Disable SGR mouse capture (helps with multiplexers that mis-route mouse events). |
+| `--snapshot <N>`, `--tick-once` | Render N frames / one tick and exit (test affordances). |
+
+Key bindings (operator quick reference; see `doc/sozu-top.md` for the
+full list):
+
+- `1`-`7` jumps to OVERVIEW · CLUSTERS · BACKENDS · LISTENERS · CERTS · H2 · EVENTS.
+- `Tab` / `Shift-Tab` cycles tabs forward / backward.
+- `s` / `S` cycles / reverses the sort column on CLUSTERS and BACKENDS.
+- `q` / `Q` / `Ctrl-C` / `F10` quits, `?` / `F1` toggles help.

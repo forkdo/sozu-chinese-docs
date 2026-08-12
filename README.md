@@ -4,66 +4,83 @@
 
 ## 项目流程
 
-### 1. 拉取上游文档
+### 首次使用
 1. 创建空分支
 ```bash
 git switch --orphan docs
 ```
 
-2. 创建 `README.md`
+2. 首次提交
 ```bash
-cat > README.md <<EOF
-# 中文文档
-
-本文档使用 AI 翻译
-EOF
-```
-
-3. 首次提交
-```bash
-git add .
+git add README.md
 git commit -am init
 git push origin docs
 ```
 
-4. 设置上游仓库
+3. 拉取上游源码
 ```bash
-git remote add upstream https://github.com/sozu-proxy/sozu.git
+mkdir -p docsite
+pushd docsite
+if [[ -d .git ]]; then
+    git remote set-url upstream https://github.com/sozu-proxy/sozu.git
+else
+    git init
+    git remote add upstream https://github.com/sozu-proxy/sozu.git
+fi
+git reset --hard
 git fetch upstream main
-git checkout upstream/main -- doc
+git merge upstream/main
+git rev-parse --short HEAD > ../commit.txt
+popd
 ```
 
-### 2. 安装 AI 助手
-1. 安装 CLI 工具
+4. 复制源文档
 ```bash
-npm install -g npm
-npm install -g @google/gemini-cli
+rm -rf docs
+cp -r docsite/doc ./docs
 ```
 
-2. 设置环境变量
+5. 全量翻译
 ```bash
-# 通过环境变量方式设置
-export GEMINI_API_KEY=
-
-# 通过 .env 文件配置
-echo 'GEMINI_API_KEY=' > .env
+aitr
 ```
 
-3. AI 翻译
+6. 本地测试与构建
 ```bash
-将 @doc 里面的英文文档翻译成中文，并且保存至 @docs_zh 文件夹里。
+git clone https://github.com/forkdo/sozu-chinese-docs.git docsite
+cp -r docs_zh/* ./docsite/doc
+cd docsite
 ```
 
+8. 启动或构建
 ```bash
-gemini --yolo --model "gemini-2.5-flash-lite" "将 @doc 里面的英文文档翻译成中文，并且保存至 @docs_zh 文件夹里。"
+# pip install zensical
+uv tool install zensical
+
+zensical build --clean
+...
 ```
 
+### 2. AI 翻译
+- 安装 [**CLI**](https://git.jetsung.com/jetsung/ai-translator) 工具 （增量更新直接使用 AI CLI 工具直接对比）
 ```bash
-gemini --yolo --model "gemini-2.5-flash-lite" "推理过程使用中文输出。将 @doc 里面的英文文档翻译成中文，并且保存至 @docs_zh 文件夹里。"
+curl -L https://fx4.cn/aitr | bash
 ```
 
-## 文档管理器
-- 安装 [Zensical](https://github.com/zensical/zensical)
+1. 设置环境变量 [`config.toml`](config.example.toml)
 ```bash
-pip install zensical
+...
+[[providers]]
+enabled = true
+name = "grok"
+api_key = "xxx"
+base_url = "https://api.x.ai/v1"
+model = "grok-3"
+concurrency = 1 # 线程数
+rate_delay = 3.0 # 每个请求后等待 1.0 秒（可根据限流调整）
+```
+
+2. AI 翻译
+```bash
+aitr
 ```

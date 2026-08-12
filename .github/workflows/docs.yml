@@ -23,8 +23,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/configure-pages@v5
-      - uses: actions/checkout@v6
+      - uses: actions/configure-pages@v6
+      - uses: actions/checkout@v7
       - uses: actions/setup-python@v6
         with:
           python-version: 3.x
@@ -42,6 +42,7 @@ jobs:
           USER: ${{ secrets.SSH_USERNAME }}
       - run: echo "" >> ~/.ssh/access  # fix
       - name: Deploy the website
+        if: ${{ vars.ENABLE_SSH_DEPLOY == 'true' }}
         env: 
           WEBROOT: /data/wwwroot/sozu
         run: |
@@ -49,7 +50,6 @@ jobs:
           scp -r site/* webserver:${WEBROOT}
 
       ### GitHub Pages
-      - run: cp CNAME site/
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
@@ -57,7 +57,8 @@ jobs:
         id: deployment
 
       - name: Deploy to Branch
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
+          cname: ${{ vars.PAGES_DOMAIN }}
