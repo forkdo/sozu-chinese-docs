@@ -3,3 +3,4 @@ site/
 config.toml
 logs/
 tmp/
+docsite/
